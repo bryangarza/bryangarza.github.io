@@ -15,12 +15,12 @@
            :publishing-function (org-html-publish-to-html)
            :exclude "rss.org"
 
-           :html-preamble nil
+           :html-preamble "<h1 class=\"title\"><a href=\"http://bryangarza.github.io\">val bryan : sushi -> emacs -> code </a></h1>"
            :html-postamble
            (lambda (info)
              "Do not show archive link in Archive, show link to index instead"
              (cond ((string= (car (plist-get info :title)) "Archive")
-                    "<a href=\"index.html\">Back to index</a>")
+                    "<a href=\"./\">Back to index</a>")
                    (t "<a href=\"archive.html\">Archive</a>")))
 
            :html-doctype "html5"
