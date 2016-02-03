@@ -36,6 +36,7 @@ h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link { color: #000 }
 h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited { color: #000 }
 
 h1 {
+  line-height: 120%;
   font-size: 1.8em;
   font-weight: 700;
 }
@@ -69,6 +70,10 @@ ul, ol { line-height: 1.1em; }
 hr     { margin-left: 0; }
 dd     { margin-left: 25px; }
 
+h3 {
+  line-height: 120%;
+}
+
 code {
   font-size: 14px;
   color: #00e;
@@ -96,7 +101,7 @@ pre.src, pre.example {
   overflow-x: auto;
   overflow-y: hidden;
   border: none;
-  background-color: #fdfdfd;
+  background-color: #f7f7f7;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
