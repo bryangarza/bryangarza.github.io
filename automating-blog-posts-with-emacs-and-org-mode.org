@@ -1,0 +1,65 @@
+#+TITLE: Automating Blog Posts With Emacs And Org-mode
+#+DATE: [2016-01-31 Sun]
+#+KEYWORDS: emacs, org-mode, blogging, elisp
+#+DESCRIPTION: how I create new blog posts
+
+[[./][Back to index]]
+
+[2016-01-31 Sun]
+
+The best way to get me writing is to remove all barriers that slow me down. This
+especially includes the setup of creating a new post in =org-mode= and writing its
+index entry and its RSS entry. It might be really easy but it's annoying to have
+to do this every time for each new post. So I whipped up some elisp that does
+all of this for me. It just takes the title, keywords, and description of the
+post, and takes care of the rest.
+
+#+BEGIN_SRC elisp
+(defun bryan/blog-new-post (title keywords description)
+  "Create a new post"
+  (interactive "sTitle: \nsKeywords: \nsDescription: ")
+  ;; (message "Keywords are: %s" keywords)
+  (let* ((filename-prepared (trim-string
+                             (replace-regexp-in-string " " "-" (downcase title))))
+         (relfile (concat filename-prepared ".org"))
+         (absfile (concat bryan/blog-blogdir relfile))
+         (date (format-time-string "[%Y-%m-%d %a]")))
+
+    (with-current-buffer (find-file-noselect bryan/blog-indexfile)
+      (goto-char (point-min))
+      (search-forward "* All Posts")
+      (insert (format "\n** [[./%s][%s]]\n" relfile title))
+      (insert (format "#+INCLUDE: \"%s\" :lines \"8-\"" relfile))
+      (with-temp-message (format "Writing to %s" bryan/blog-indexfile)
+        (save-buffer))
+      (message "Writing file...done"))
+
+    (with-current-buffer (find-file-noselect bryan/blog-rssfile)
+      (goto-char (point-min))
+      (-each `(,(format "* [[./%s][%s]]\n" relfile title) ; heading level 1
+               ":PROPERTIES:\n"
+               ,(format ":RSS_PERMALINK: %s\n" (concat filename-prepared ".html"))
+               ,(format ":PUBDATE: %s\n" (format-time-string "<%Y-%m-%d %a>"))
+               ":END:\n"
+               ,(format "#+INCLUDE: \"%s\" :lines \"8-\"\n" relfile))
+        'insert)
+      (with-temp-message (format "Writing to %s" bryan/blog-rssfile)
+        (save-buffer))
+      (message "Writing file...done"))
+
+    (with-temp-buffer
+      (-each `(,(format "#+TITLE: %s\n" title)
+               ,(format "#+DATE: %s\n" date)
+               ,(format "#+KEYWORDS: %s\n" keywords)
+               ,(format "#+DESCRIPTION: %s\n" description)
+               "\n[[./][Back to index]]\n\n"
+               ,(format "%s\n\n" date))
+        'insert)
+      (when (file-writable-p absfile)
+        (write-region (point-min)
+                      (point-max)
+                      absfile)))
+    (find-file absfile))
+  (goto-char (point-max))
+  (message "Generated template."))
+#+END_SRC

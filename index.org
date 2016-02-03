@@ -1,0 +1,23 @@
+#+TITLE: Home
+#+AUTHOR: Bryan Garza
+#+DATE: [2016-01-01 Fri]
+#+EMAIL: brygarza@gmail.com
+#+OPTIONS: title:nil H:5
+
+#+BEGIN_HTML
+<h1 class="title"><a href="http://bryangarza.github.io">val bryan : sushi -> emacs -> code </a></h1>
+#+END_HTML
+
+I'm a computer scientist interested in functional programming and artificial
+intelligence. My favorite programming languages are OCaml, Haskell, Racket, and
+Emacs Lisp. ([[https://github.com/bryangarza][Github]])
+
+* All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
+** [[./universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
+#+INCLUDE: "universal-quantification-in-ocaml.org" :lines "8-"
+** [[./automating-blog-posts-with-emacs-and-org-mode.org][Automating Blog Posts With Emacs And Org-mode]]
+#+INCLUDE: "automating-blog-posts-with-emacs-and-org-mode.org" :lines "8-"
+** [[./diff-hl-replacing-git-gutter.org][Diff-hl replacing git-gutter]]
+#+INCLUDE: "diff-hl-replacing-git-gutter.org" :lines "8-"
+** [[./basic-graph-traversal-in-ocaml.org][Basic Graph Traversal In OCaml]]
+#+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "8-"

@@ -1,0 +1,204 @@
+body {
+  font-family: "Helvetica Neue",sans-serif;
+  /* font-family: Georgia,"Times New Roman",Times,serif; */
+  text-rendering: optimizeLegibility;
+  color: #333;
+  /* letter-spacing: 0.02em; */
+  line-height: 24px;
+  background-color: #ffffff;
+  font-size: 18px;
+  max-width: 680px;
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+h1, h2, h3, h4, h5 { color: #444 }
+h2, h3, h4, h5 { font-weight: normal }
+
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #f00;
+}
+a:visited {
+  color: #900;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 a:hover {
+  text-decoration: none;
+}
+
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link { color: #000 }
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited { color: #000 }
+
+h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+h2 {
+  position:relative;
+}
+
+h2 > span {
+  position: absolute;
+  font-size: 18px;
+  padding-left: .5em;
+  padding-top: 1px;
+}
+
+h2 > span a:link {
+  color: #f00;
+}
+
+h2 > span a:visited {
+  color: #900;
+}
+
+.title { text-align: left; }
+h2     { font-size: 1.6em; }
+h3     { font-size: 1.4em; }
+h4     { font-size: 1.2em; }
+h5     { font-size: 1.1em; }
+kbd    { font-size: 12px; }
+ul, ol { line-height: 1.1em; }
+hr     { margin-left: 0; }
+dd     { margin-left: 25px; }
+
+code {
+  font-size: 14px;
+  color: #00e;
+}
+
+h2, h3, h4, h5 {
+  margin-top: 10px
+  margin-bottom: 10px
+}
+
+dt {
+  margin-top:    5px;
+  margin-bottom: 5px;
+}
+
+/* pre.src > * {
+   font-weight: normal !important;
+   } */
+
+pre.src, pre.example, code {
+  font-family: Monaco, Consolas, "Courier New", monospace;
+}
+
+pre.src, pre.example {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: none;
+  background-color: #fdfdfd;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin: 0;
+  padding-left: 1em;
+  font-size: 13px;
+  line-height: 115%;
+}
+
+
+table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+table td,
+table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.3em 1em; /* cell padding */
+}
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+table td:first-child,
+table th:first-child {
+    border-left-width: 0;
+}
+
+table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+table td {
+    background-color: transparent;
+}
+table-odd td {
+    background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+table tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
+}
+
+/* BORDERED TABLES */
+table-bordered td {
+    border-bottom: 1px solid #cbcbcb;
+}
+table-bordered tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+
+/* HORIZONTAL BORDERED TABLES */
+
+table-horizontal td,
+table-horizontal th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+table-horizontal tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+kbd
+{
+  padding               : 0.1em 0.6em 0.1em 0.6em;
+  border                : solid 1px rgb(204,204,204);
+  background-color      : rgb(247,247,247);
+  color                 : rgb(51,51,51);
+  -moz-box-shadow       : 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -webkit-box-shadow    : 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  box-shadow            : 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px #ffffff inset;
+  -moz-border-radius    : 3px 3px 3px 3px;
+  -webkit-border-radius : 3px 3px 3px 3px;
+  border-radius         : 3px 3px 3px 3px;
+  display               : inline-block;
+  margin                : 0 0.1em 0 0.1em;
+  text-shadow           : 0 1px 0 rgb(255,255,255);
+  line-height           : 1.4;
+  white-space           : nowrap;
+  vertical-align        : 10%;
+}

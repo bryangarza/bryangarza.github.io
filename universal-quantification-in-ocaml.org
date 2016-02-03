@@ -1,0 +1,31 @@
+#+TITLE: Universal Quantification in OCaml
+#+DATE: [2016-02-02 Tue]
+#+KEYWORDS: ocaml, types
+#+DESCRIPTION: Difference between using signatures and annotations in OCaml
+
+[[./][Back to index]]
+
+[2016-02-02 Tue]
+
+The difference between OCaml's type signatures and type annotations is quite
+subtle. First of all, signatures are what you put in the mli files, whereas
+annotations are inline with your code. When you write a function like
+#+BEGIN_SRC ocaml
+let foo : 'a -> 'a = fun x -> 0
+#+END_SRC
+the type of ~foo~ resolves to ~int -> int~, because @@html:<code>'a</code>@@ is
+serving as a unification variable and not a type parameter. In order to force
+the compiler to not constrain the function to the concrete type ~int~, you need
+to annotate
+#+BEGIN_SRC ocaml
+let foo : 'a. 'a -> 'a = fun x -> 0
+#+END_SRC
+Essentially, this means "for all types 'a", and now we are dealing with a type
+parameter instead, forcing the compiler to keep the function polymorphic. The
+mli files work with type parameters by default, so if you are writing type
+signatures there you might not run into this problem. However, sometimes your
+function will not typecheck (because it's unclear) until you annotate it with
+the type ascription, and you'll need to do that before the mli can be checked by
+the compiler.
+
+There's some more info about this on [[http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a][SO]] and [[https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/][Jane Street's blog]].

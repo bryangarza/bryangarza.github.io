@@ -1,0 +1,7 @@
+#+TITLE: Archive
+
+   + [[file:universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
+   + [[file:diff-hl-replacing-git-gutter.org][Diff-hl replacing git-gutter]]
+   + [[file:automating-blog-posts-with-emacs-and-org-mode.org][Automating Blog Posts With Emacs And Org-mode]]
+   + [[file:basic-graph-traversal-in-ocaml.org][Basic Graph Traversal In OCaml]]
+   + [[file:index.org][Home]]
