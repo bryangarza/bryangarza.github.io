@@ -8,9 +8,8 @@
 <h1 class="title"><a href="http://bryangarza.github.io">val bryan : sushi -> emacs -> code </a></h1>
 #+END_HTML
 
-I'm a computer scientist interested in functional programming and artificial
-intelligence. My favorite programming languages are OCaml, Haskell, Racket, and
-Emacs Lisp. ([[https://github.com/bryangarza][Github]])
+I'm a computer scientist interested in functional programming. My favorite
+programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://github.com/bryangarza][Github]])
 
 * All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 ** [[./universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
