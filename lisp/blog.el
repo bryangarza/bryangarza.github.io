@@ -83,7 +83,8 @@
          (date-day-not-padded (string-trim (format-time-string "%e")))
          (mon (format-time-string "%B"))
          (yr (format-time-string "%Y"))
-         (date-human-readable (concat "(" mon (format " %s, " date-day-not-padded) yr ")"))
+         (date-human-readable
+          (concat "(" mon (format " %s, " date-day-not-padded) yr ")"))
          (my-html-link-and-span
           `(,(html-a
               :href relfile-html title)
@@ -103,8 +104,7 @@
         (html-div
          :class "outline-3"
          (html-h3
-          my-html-link-and-span
-          ))))
+          my-html-link-and-span))))
       (insert "\n#+END_HTML\n")
       (insert (format "#+INCLUDE: \"%s\" :lines \"11-\"" relfile))
       (insert (bryan/org-escape-html "</div>"))
@@ -132,7 +132,7 @@
                ,(format "#+DESCRIPTION: %s\n" description)
                "#+OPTIONS: title:nil\n\n"
                "#+BEGIN_HTML\n")
-        'insert)
+        #'insert)
       (html-lite-write-tree-single-line
        (html-header
         (html-h1 :class "title" my-html-link-and-span)
