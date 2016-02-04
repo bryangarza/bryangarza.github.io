@@ -42,7 +42,8 @@ h1 {
 }
 
 .timestamp {
-  font-size: 18px;
+  color: #444;
+  font-size: .6em;
 }
 
 div#preamble > h1 {
