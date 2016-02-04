@@ -4,4 +4,3 @@
    + [[file:diff-hl-replacing-git-gutter.org][Diff-hl replacing git-gutter]]
    + [[file:automating-blog-posts-with-org-mode.org][Automating Blog Posts With Org-mode]]
    + [[file:basic-graph-traversal-in-ocaml.org][Basic Graph Traversal in OCaml]]
-   + [[file:index.org][Home]]
