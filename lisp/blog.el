@@ -67,6 +67,9 @@
   (setq org-html-doctype "html5")
   (setq org-html-html5-fancy t))
 
+(defun bryan/org-escape-html (str)
+  (mapconcat #'identity `("" "#+BEGIN_HTML" ,str "#+END_HTML" "") "\n"))
+
 (defun bryan/blog-new-post (title keywords description)
   "Create a new post"
   (interactive "sTitle: \nsKeywords: \nsDescription: ")
@@ -74,14 +77,37 @@
   (let* ((filename-prepared (string-trim
                              (replace-regexp-in-string " " "-" (downcase title))))
          (relfile (concat filename-prepared ".org"))
+         (relfile-html (concat "./" filename-prepared ".html"))
          (absfile (concat bryan/blog-blogdir relfile))
-         (date (format-time-string "[%Y-%m-%d %a]")))
+         (date (format-time-string "[%Y-%m-%d %a]"))
+         (date-day-not-padded (string-trim (format-time-string "%e")))
+         (mon (format-time-string "%B"))
+         (yr (format-time-string "%Y"))
+         (date-human-readable (concat "(" mon (format " %s, " date-day-not-padded) yr ")"))
+         (my-html-link-and-span
+          `(,(html-a
+              :href relfile-html title)
+            ,(html-span " ")
+            ,(html-span
+              :class "timestamp-wrapper"
+              (html-span
+               :class "timestamp"
+               date-human-readable)))))
 
     (with-current-buffer (find-file-noselect bryan/blog-indexfile)
       (goto-char (point-min))
-      (search-forward "* All Posts")
-      (insert (format "\n** [[./%s][%s]]\n" relfile title))
-      (insert (format "#+INCLUDE: \"%s\" :lines \"8-\"" relfile))
+      (search-forward ">@@")
+      (insert "\n#+BEGIN_HTML\n")
+      (html-lite-write-tree-single-line
+       (butlast
+        (html-div
+         :class "outline-3"
+         (html-h3
+          my-html-link-and-span
+          ))))
+      (insert "\n#+END_HTML\n")
+      (insert (format "#+INCLUDE: \"%s\" :lines \"11-\"" relfile))
+      (insert (bryan/org-escape-html "</div>"))
       (with-temp-message (format "Writing to %s" bryan/blog-indexfile)
         (save-buffer))
       (message "Writing file...done"))
@@ -104,9 +130,15 @@
                ,(format "#+DATE: %s\n" date)
                ,(format "#+KEYWORDS: %s\n" keywords)
                ,(format "#+DESCRIPTION: %s\n" description)
-               "\n[[./][Back to index]]\n\n"
-               ,(format "%s\n\n" date))
+               "#+OPTIONS: title:nil\n\n"
+               "#+BEGIN_HTML\n")
         'insert)
+      (html-lite-write-tree-single-line
+       (html-header
+        (html-h1 :class "title" my-html-link-and-span)
+        (html-div :class "back-to-index"
+                  (html-a :href "./" "Back to index"))))
+      (insert "\n#+END_HTML\n\n")
       (when (file-writable-p absfile)
         (write-region (point-min)
                       (point-max)

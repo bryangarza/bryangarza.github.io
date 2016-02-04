@@ -1,11 +1,12 @@
-#+TITLE: Automating Blog Posts With Emacs And Org-mode
+#+TITLE: Automating Blog Posts With Org-mode
 #+DATE: [2016-01-31 Sun]
 #+KEYWORDS: emacs, org-mode, blogging, elisp
-#+DESCRIPTION: how I create new blog posts
+#+DESCRIPTION: How I create new blog posts
+#+OPTIONS: title:nil
 
-[[./][Back to index]]
-
-[2016-01-31 Sun]
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+#+END_HTML
 
 The best way to get me writing is to remove all barriers that slow me down. This
 especially includes the setup of creating a new post in =org-mode= and writing its

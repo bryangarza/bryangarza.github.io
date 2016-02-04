@@ -8,11 +8,35 @@ I'm a computer scientist interested in functional programming. My favorite
 programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://github.com/bryangarza][Github]])
 
 * All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
-** [[./universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
-#+INCLUDE: "universal-quantification-in-ocaml.org" :lines "8-"
-** [[./automating-blog-posts-with-emacs-and-org-mode.org][Automating Blog Posts With Emacs And Org-mode]]
-#+INCLUDE: "automating-blog-posts-with-emacs-and-org-mode.org" :lines "8-"
-** [[./diff-hl-replacing-git-gutter.org][Diff-hl replacing git-gutter]]
-#+INCLUDE: "diff-hl-replacing-git-gutter.org" :lines "8-"
-** [[./basic-graph-traversal-in-ocaml.org][Basic Graph Traversal In OCaml]]
-#+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "8-"
+#+BEGIN_HTML
+<div class="outline-3">
+<h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "universal-quantification-in-ocaml.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+#+BEGIN_HTML
+<div class="outline-3"><h3><a href="./diff-hl-replacing-git-gutter.html">Diff-hl replacing git-gutter</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "diff-hl-replacing-git-gutter.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+#+BEGIN_HTML
+<div class="outline-3"><h3><a href="./automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "automating-blog-posts-with-org-mode.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+#+BEGIN_HTML
+<div class="outline-3"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML

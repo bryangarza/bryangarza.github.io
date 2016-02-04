@@ -2,10 +2,11 @@
 #+DATE: [2016-02-02 Tue]
 #+KEYWORDS: ocaml, types
 #+DESCRIPTION: Difference between using signatures and annotations in OCaml
+#+OPTIONS: title:nil
 
-[[./][Back to index]]
-
-[2016-02-02 Tue]
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(Tuesday, February 2)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+#+END_HTML
 
 The difference between OCaml's type signatures and type annotations is quite
 subtle. First of all, signatures are what you put in the mli files, whereas

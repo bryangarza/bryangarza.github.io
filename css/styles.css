@@ -37,24 +37,39 @@ h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited { color: #0
 
 h1 {
   line-height: 120%;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: normal;
 }
 
+.timestamp {
+  font-size: 18px;
+}
+
 div#preamble > h1 {
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: bold;
 }
 
+/* h2, h3 { */
 h2 {
   position:relative;
 }
 
+/* h2 > span, .timestamp { */
 h2 > span {
   position: absolute;
   font-size: 18px;
   padding-left: .5em;
-  padding-top: 1px;
+  padding-top: 2px;
+}
+
+span.timestamp-wrapper {
+  display: inline-block;
+}
+
+div.back-to-index {
+  margin-top: 0;
+  padding-top: 5px;
 }
 
 h2 > span a:link {
@@ -66,8 +81,8 @@ h2 > span a:visited {
 }
 
 .title { text-align: left; }
-h2     { font-size: 1.6em; }
-h3     { font-size: 1.4em; }
+h2     { font-size: 1.4em; }
+h3     { font-size: 1.3em; }
 h4     { font-size: 1.2em; }
 h5     { font-size: 1.1em; }
 kbd    { font-size: 12px; }

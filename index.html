@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-03 Wed 11:32 -->
+<!-- 2016-02-03 Wed 17:45 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -152,16 +152,11 @@ I'm a computer scientist interested in functional programming. My favorite
 programming languages are OCaml, Haskell, Racket, and Emacs Lisp. (<a href="https://github.com/bryangarza">Github</a>)
 </p>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">All Posts <span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
-<div class="outline-text-2" id="text-orgheadline5">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a></h3>
-<div class="outline-text-3" id="text-orgheadline1">
-<p>
-<span class="timestamp-wrapper"><span class="timestamp">[2016-02-02 Tue]</span></span>
-</p>
-
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">All Posts <span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<div class="outline-3">
+<h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
 <p>
 The difference between OCaml's type signatures and type annotations is quite
 subtle. First of all, signatures are what you put in the mli files, whereas
@@ -197,14 +192,43 @@ the compiler.
 There's some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
 </p>
 </div>
-</div>
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><a href="./automating-blog-posts-with-emacs-and-org-mode.html">Automating Blog Posts With Emacs And Org-mode</a></h3>
-<div class="outline-text-3" id="text-orgheadline2">
+
+<div class="outline-3"><h3><a href="./diff-hl-replacing-git-gutter.html">Diff-hl replacing git-gutter</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
 <p>
-<span class="timestamp-wrapper"><span class="timestamp">[2016-01-31 Sun]</span></span>
+I used to have a perfectly working git gutter setup in Vim, but when I switched
+to Emacs, I found that the <a href="https://github.com/syohex/emacs-git-gutter">emacs-git-gutter</a> package was quite buggy. Since it
+never worked properly for me, I ended up just relying on magit to view what
+changes I'd made.
 </p>
 
+<p>
+Today, however, I started using the <a href="https://github.com/dgutov/diff-hl">diff-hl</a> package. It unobtrusively colors
+the fringe green, red, or blue, and so far has been working with zero problems.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">diff-hl</span>
+  <span style="color: #483d8b;">:ensure</span> t
+  <span style="color: #483d8b;">:config</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">progn</span>
+    <span style="color: #909183;">(</span>add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>global-diff-hl-mode<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>diff-hl-flydiff-mode<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Edit: It seems that this package has problems with magit, and I ended up having
+to fully purge it from emacs. Whenever magit runs a <code>post-command-hook</code>, it
+freezes to the point where I can only solve it by force
+quitting. <kbd>M-x</kbd> stops working when this happens, as well as
+<kbd>C-x C-c</kbd>. I might come back to this and try again in the
+future.
+</p>
+</div>
+
+<div class="outline-3"><h3><a href="./automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
 <p>
 The best way to get me writing is to remove all barriers that slow me down. This
 especially includes the setup of creating a new post in <code>org-mode</code> and writing its
@@ -266,55 +290,8 @@ post, and takes care of the rest.
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><a href="./diff-hl-replacing-git-gutter.html">Diff-hl replacing git-gutter</a></h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<p>
-<span class="timestamp-wrapper"><span class="timestamp">[2016-01-31 Sun]</span></span>
-</p>
 
-<p>
-I used to have a perfectly working git gutter setup in Vim, but when I switched
-to Emacs, I found that the <a href="https://github.com/syohex/emacs-git-gutter">emacs-git-gutter</a> package was quite buggy. Since it
-never worked properly for me, I ended up just relying on magit to view what
-changes I'd made.
-</p>
-
-<p>
-Today, however, I started using the <a href="https://github.com/dgutov/diff-hl">diff-hl</a> package. It unobtrusively colors
-the fringe green, red, or blue, and so far has been working with zero problems.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">diff-hl</span>
-  <span style="color: #483d8b;">:ensure</span> t
-  <span style="color: #483d8b;">:config</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">progn</span>
-    <span style="color: #909183;">(</span>add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>global-diff-hl-mode<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>diff-hl-flydiff-mode<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
-</pre>
-</div>
-
-<p>
-Edit: It seems that this package has problems with magit, and I ended up having
-to fully purge it from emacs. Whenever magit runs a <code>post-command-hook</code>, it
-freezes to the point where I can only solve it by force
-quitting. <kbd>M-x</kbd> stops working when this happens, as well as
-<kbd>C-x C-c</kbd>. I might come back to this and try again in the
-future.
-</p>
-</div>
-</div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal In OCaml</a></h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<p>
-<span class="timestamp-wrapper"><span class="timestamp">[2016-01-28 Thu]</span></span>
-</p>
-
+<div class="outline-3"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
 <p>
 This is my solution to Cracking The Coding Interview problem 4.2.
 The problem is: Given a directed graph, design an algorithm to find out whether
