@@ -9,6 +9,14 @@ programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://git
 
 * All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 #+BEGIN_HTML
+<div class="outline-3"><h3><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "on-the-importance-of-enforcing-invariants.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+#+BEGIN_HTML
 <div class="outline-3">
 <h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
 #+END_HTML

@@ -1,0 +1,29 @@
+#+TITLE: On The Importance Of Enforcing Invariants
+#+DATE: [2016-02-04 Thu]
+#+KEYWORDS: ocaml, invariants, concrete types, abstract types
+#+DESCRIPTION: Abstract types versus concrete types
+#+OPTIONS: title:nil
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+#+END_HTML
+
+Something that comes up early on when learning OCaml is the topic of abstract
+types. Comparable to "encapsulation" in object-oriented programming, one purpose
+of abstract types is to protect the programmer from misusing a module's
+types. By abstracting the type, for example, presenting a ~Number.t~ instead of a
+plain ~int~ type, the underlying implementation can be swapped out, without
+affecting code using the module. Only by using the module can the user create a
+value of that type, because only the module knows that ~Number.t = int~, and has
+ability to create that type.
+
+Abstract types guarantee that the user can never access the concrete type
+directly This is known as "enforcing invariants", preserving certain properties
+about the type, so that you can now assume they will always be true, i.e.,
+/invariant/.  Placing this restriction on library users increases the level of
+type safety significantly.
+
+On the other hand, sometimes you /do/ want to have concrete types in your
+interface, and that's okay too. It gives more flexibility to the user, since
+they can construct those types by hand, and have more detail about the internals
+of the module.

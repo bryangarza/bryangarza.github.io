@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-03 Wed 17:45 -->
+<!-- 2016-02-04 Thu 16:47 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -155,6 +155,34 @@ programming languages are OCaml, Haskell, Racket, and Emacs Lisp. (<a href="http
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">All Posts <span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
+<div class="outline-3"><h3><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h3>
+<p>
+Something that comes up early on when learning OCaml is the topic of abstract
+types. Comparable to "encapsulation" in object-oriented programming, one purpose
+of abstract types is to protect the programmer from misusing a module's
+types. By abstracting the type, for example, presenting a <code>Number.t</code> instead of a
+plain <code>int</code> type, the underlying implementation can be swapped out, without
+affecting code using the module. Only by using the module can the user create a
+value of that type, because only the module knows that <code>Number.t = int</code>, and has
+ability to create that type.
+</p>
+
+<p>
+Abstract types guarantee that the user can never access the concrete type
+directly This is known as "enforcing invariants", preserving certain properties
+about the type, so that you can now assume they will always be true, i.e.,
+<i>invariant</i>.  Placing this restriction on library users increases the level of
+type safety significantly.
+</p>
+
+<p>
+On the other hand, sometimes you <i>do</i> want to have concrete types in your
+interface, and that's okay too. It gives more flexibility to the user, since
+they can construct those types by hand, and have more detail about the internals
+of the module.
+</p>
+</div>
+
 <div class="outline-3">
 <h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
 <p>

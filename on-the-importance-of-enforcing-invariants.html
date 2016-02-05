@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-04 Thu 16:43 -->
+<!-- 2016-02-04 Thu 16:47 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
-<title>Archive</title>
+<title>On The Importance Of Enforcing Invariants</title>
 <meta  name="generator" content="Org-mode">
 <meta  name="author" content="Bryan Garza">
+<meta  name="description" content="Abstract types versus concrete types"
+>
+<meta  name="keywords" content="ocaml, invariants, concrete types, abstract types">
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -147,18 +150,36 @@ for the JavaScript code in this tag.
 <h1 class="title"><a href="http://bryangarza.github.io">val bryan : sushi -> emacs -> code </a></h1>
 </div>
 <div id="content">
-<header>
-<h1 class="title">Archive</h1>
-</header><ul class="org-ul">
-<li><a href="on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a></li>
-<li><a href="universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a></li>
-<li><a href="diff-hl-replacing-git-gutter.html">Diff-hl replacing git-gutter</a></li>
-<li><a href="automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a></li>
-<li><a href="basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a></li>
-</ul>
+<header><h1 class="title"><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+
+<p>
+Something that comes up early on when learning OCaml is the topic of abstract
+types. Comparable to "encapsulation" in object-oriented programming, one purpose
+of abstract types is to protect the programmer from misusing a module's
+types. By abstracting the type, for example, presenting a <code>Number.t</code> instead of a
+plain <code>int</code> type, the underlying implementation can be swapped out, without
+affecting code using the module. Only by using the module can the user create a
+value of that type, because only the module knows that <code>Number.t = int</code>, and has
+ability to create that type.
+</p>
+
+<p>
+Abstract types guarantee that the user can never access the concrete type
+directly This is known as "enforcing invariants", preserving certain properties
+about the type, so that you can now assume they will always be true, i.e.,
+<i>invariant</i>.  Placing this restriction on library users increases the level of
+type safety significantly.
+</p>
+
+<p>
+On the other hand, sometimes you <i>do</i> want to have concrete types in your
+interface, and that's okay too. It gives more flexibility to the user, since
+they can construct those types by hand, and have more detail about the internals
+of the module.
+</p>
 </div>
 <div id="postamble" class="status">
-<a href="./">Back to index</a>
+<a href="archive.html">Archive</a>
 </div>
 </body>
 </html>

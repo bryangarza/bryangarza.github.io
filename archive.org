@@ -1,5 +1,6 @@
 #+TITLE: Archive
 
+   + [[file:on-the-importance-of-enforcing-invariants.org][On The Importance Of Enforcing Invariants]]
    + [[file:universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
    + [[file:diff-hl-replacing-git-gutter.org][Diff-hl replacing git-gutter]]
    + [[file:automating-blog-posts-with-org-mode.org][Automating Blog Posts With Org-mode]]
