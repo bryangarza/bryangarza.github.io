@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-04 Thu 16:47 -->
+<!-- 2016-02-04 Thu 21:38 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -218,41 +218,6 @@ the compiler.
 
 <p>
 There's some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
-</p>
-</div>
-
-<div class="outline-3"><h3><a href="./diff-hl-replacing-git-gutter.html">Diff-hl replacing git-gutter</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
-<p>
-I used to have a perfectly working git gutter setup in Vim, but when I switched
-to Emacs, I found that the <a href="https://github.com/syohex/emacs-git-gutter">emacs-git-gutter</a> package was quite buggy. Since it
-never worked properly for me, I ended up just relying on magit to view what
-changes I'd made.
-</p>
-
-<p>
-Today, however, I started using the <a href="https://github.com/dgutov/diff-hl">diff-hl</a> package. It unobtrusively colors
-the fringe green, red, or blue, and so far has been working with zero problems.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">diff-hl</span>
-  <span style="color: #483d8b;">:ensure</span> t
-  <span style="color: #483d8b;">:config</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">progn</span>
-    <span style="color: #909183;">(</span>add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>global-diff-hl-mode<span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>diff-hl-flydiff-mode<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
-</pre>
-</div>
-
-<p>
-Edit: It seems that this package has problems with magit, and I ended up having
-to fully purge it from emacs. Whenever magit runs a <code>post-command-hook</code>, it
-freezes to the point where I can only solve it by force
-quitting. <kbd>M-x</kbd> stops working when this happens, as well as
-<kbd>C-x C-c</kbd>. I might come back to this and try again in the
-future.
 </p>
 </div>
 
