@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-03 Wed 17:37 -->
+<!-- 2016-02-05 Fri 16:41 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Universal Quantification in OCaml</title>
@@ -153,9 +153,9 @@ for the JavaScript code in this tag.
 <header><h1 class="title"><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(Tuesday, February 2)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
 
 <p>
-The difference between OCaml's type signatures and type annotations is quite
+The difference between OCaml&rsquo;s type signatures and type annotations is quite
 subtle. First of all, signatures are what you put in the mli files, whereas
-annotations are inline with your code. When you write a function like
+annotations are inline with your code. When you write a function like:
 </p>
 <div class="org-src-container">
 
@@ -166,7 +166,7 @@ annotations are inline with your code. When you write a function like
 the type of <code>foo</code> resolves to <code>int -&gt; int</code>, because <code>'a</code> is
 serving as a unification variable and not a type parameter. In order to force
 the compiler to not constrain the function to the concrete type <code>int</code>, you need
-to annotate
+to annotate:
 </p>
 <div class="org-src-container">
 
@@ -174,17 +174,17 @@ to annotate
 </pre>
 </div>
 <p>
-Essentially, this means "for all types 'a", and now we are dealing with a type
+Essentially, this means &ldquo;for all types &lsquo;a&rdquo;, and now we are dealing with a type
 parameter instead, forcing the compiler to keep the function polymorphic. The
 mli files work with type parameters by default, so if you are writing type
 signatures there you might not run into this problem. However, sometimes your
-function will not typecheck (because it's unclear) until you annotate it with
-the type ascription, and you'll need to do that before the mli can be checked by
+function will not typecheck (because it&rsquo;s unclear) until you annotate it with
+the type ascription, and you&rsquo;ll need to do that before the mli can be checked by
 the compiler.
 </p>
 
 <p>
-There's some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
+There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
 </p>
 </div>
 <div id="postamble" class="status">

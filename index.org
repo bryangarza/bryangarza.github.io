@@ -34,7 +34,7 @@ programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://git
 #+END_HTML
 
 #+BEGIN_HTML
-<div class="outline-3"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
+<div class="outline-3 bottom-post"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
 #+END_HTML
 #+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "11-"
 #+BEGIN_HTML

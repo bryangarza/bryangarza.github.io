@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-04 Thu 16:47 -->
+<!-- 2016-02-05 Fri 15:43 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>On The Importance Of Enforcing Invariants</title>
@@ -154,8 +154,8 @@ for the JavaScript code in this tag.
 
 <p>
 Something that comes up early on when learning OCaml is the topic of abstract
-types. Comparable to "encapsulation" in object-oriented programming, one purpose
-of abstract types is to protect the programmer from misusing a module's
+types. Comparable to &ldquo;encapsulation&rdquo; in object-oriented programming, one purpose
+of abstract types is to protect the programmer from misusing a module&rsquo;s
 types. By abstracting the type, for example, presenting a <code>Number.t</code> instead of a
 plain <code>int</code> type, the underlying implementation can be swapped out, without
 affecting code using the module. Only by using the module can the user create a
@@ -165,7 +165,7 @@ ability to create that type.
 
 <p>
 Abstract types guarantee that the user can never access the concrete type
-directly This is known as "enforcing invariants", preserving certain properties
+directly This is known as &ldquo;enforcing invariants&rdquo;, preserving certain properties
 about the type, so that you can now assume they will always be true, i.e.,
 <i>invariant</i>.  Placing this restriction on library users increases the level of
 type safety significantly.
@@ -173,7 +173,7 @@ type safety significantly.
 
 <p>
 On the other hand, sometimes you <i>do</i> want to have concrete types in your
-interface, and that's okay too. It gives more flexibility to the user, since
+interface, and that&rsquo;s okay too. It gives more flexibility to the user, since
 they can construct those types by hand, and have more detail about the internals
 of the module.
 </p>

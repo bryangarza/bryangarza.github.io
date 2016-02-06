@@ -10,14 +10,14 @@
 
 The difference between OCaml's type signatures and type annotations is quite
 subtle. First of all, signatures are what you put in the mli files, whereas
-annotations are inline with your code. When you write a function like
+annotations are inline with your code. When you write a function like:
 #+BEGIN_SRC ocaml
 let foo : 'a -> 'a = fun x -> 0
 #+END_SRC
 the type of ~foo~ resolves to ~int -> int~, because @@html:<code>'a</code>@@ is
 serving as a unification variable and not a type parameter. In order to force
 the compiler to not constrain the function to the concrete type ~int~, you need
-to annotate
+to annotate:
 #+BEGIN_SRC ocaml
 let foo : 'a. 'a -> 'a = fun x -> 0
 #+END_SRC

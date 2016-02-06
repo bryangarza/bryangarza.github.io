@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-04 Thu 21:38 -->
+<!-- 2016-02-05 Fri 16:42 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -148,7 +148,7 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <p>
-I'm a computer scientist interested in functional programming. My favorite
+I&rsquo;m a computer scientist interested in functional programming. My favorite
 programming languages are OCaml, Haskell, Racket, and Emacs Lisp. (<a href="https://github.com/bryangarza">Github</a>)
 </p>
 
@@ -158,8 +158,8 @@ programming languages are OCaml, Haskell, Racket, and Emacs Lisp. (<a href="http
 <div class="outline-3"><h3><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h3>
 <p>
 Something that comes up early on when learning OCaml is the topic of abstract
-types. Comparable to "encapsulation" in object-oriented programming, one purpose
-of abstract types is to protect the programmer from misusing a module's
+types. Comparable to &ldquo;encapsulation&rdquo; in object-oriented programming, one purpose
+of abstract types is to protect the programmer from misusing a module&rsquo;s
 types. By abstracting the type, for example, presenting a <code>Number.t</code> instead of a
 plain <code>int</code> type, the underlying implementation can be swapped out, without
 affecting code using the module. Only by using the module can the user create a
@@ -169,7 +169,7 @@ ability to create that type.
 
 <p>
 Abstract types guarantee that the user can never access the concrete type
-directly This is known as "enforcing invariants", preserving certain properties
+directly This is known as &ldquo;enforcing invariants&rdquo;, preserving certain properties
 about the type, so that you can now assume they will always be true, i.e.,
 <i>invariant</i>.  Placing this restriction on library users increases the level of
 type safety significantly.
@@ -177,7 +177,7 @@ type safety significantly.
 
 <p>
 On the other hand, sometimes you <i>do</i> want to have concrete types in your
-interface, and that's okay too. It gives more flexibility to the user, since
+interface, and that&rsquo;s okay too. It gives more flexibility to the user, since
 they can construct those types by hand, and have more detail about the internals
 of the module.
 </p>
@@ -186,9 +186,9 @@ of the module.
 <div class="outline-3">
 <h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
 <p>
-The difference between OCaml's type signatures and type annotations is quite
+The difference between OCaml&rsquo;s type signatures and type annotations is quite
 subtle. First of all, signatures are what you put in the mli files, whereas
-annotations are inline with your code. When you write a function like
+annotations are inline with your code. When you write a function like:
 </p>
 <div class="org-src-container">
 
@@ -199,7 +199,7 @@ annotations are inline with your code. When you write a function like
 the type of <code>foo</code> resolves to <code>int -&gt; int</code>, because <code>'a</code> is
 serving as a unification variable and not a type parameter. In order to force
 the compiler to not constrain the function to the concrete type <code>int</code>, you need
-to annotate
+to annotate:
 </p>
 <div class="org-src-container">
 
@@ -207,17 +207,17 @@ to annotate
 </pre>
 </div>
 <p>
-Essentially, this means "for all types 'a", and now we are dealing with a type
+Essentially, this means &ldquo;for all types &lsquo;a&rdquo;, and now we are dealing with a type
 parameter instead, forcing the compiler to keep the function polymorphic. The
 mli files work with type parameters by default, so if you are writing type
 signatures there you might not run into this problem. However, sometimes your
-function will not typecheck (because it's unclear) until you annotate it with
-the type ascription, and you'll need to do that before the mli can be checked by
+function will not typecheck (because it&rsquo;s unclear) until you annotate it with
+the type ascription, and you&rsquo;ll need to do that before the mli can be checked by
 the compiler.
 </p>
 
 <p>
-There's some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
+There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
 </p>
 </div>
 
@@ -225,7 +225,7 @@ There's some more info about this on <a href="http://stackoverflow.com/questions
 <p>
 The best way to get me writing is to remove all barriers that slow me down. This
 especially includes the setup of creating a new post in <code>org-mode</code> and writing its
-index entry and its RSS entry. It might be really easy but it's annoying to have
+index entry and its RSS entry. It might be really easy but it&rsquo;s annoying to have
 to do this every time for each new post. So I whipped up some elisp that does
 all of this for me. It just takes the title, keywords, and description of the
 post, and takes care of the rest.
@@ -284,7 +284,7 @@ post, and takes care of the rest.
 </div>
 </div>
 
-<div class="outline-3"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
+<div class="outline-3 bottom-post"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
 <p>
 This is my solution to Cracking The Coding Interview problem 4.2.
 The problem is: Given a directed graph, design an algorithm to find out whether
@@ -292,10 +292,10 @@ there is a route between two nodes.
 </p>
 
 <p>
-Keep in mind that I've only been writing OCaml for a few weeks. There is
-probably a more elegant solution. Once my OCaml is more advanced, I'll make a
-new post. This solution does BFS traversal, returning <code>None</code> early when it can't
-traverse any further and hasn't reached the destination node.
+Keep in mind that I&rsquo;ve only been writing OCaml for a few weeks. There is
+probably a more elegant solution. Once my OCaml is more advanced, I&rsquo;ll make a
+new post. This solution does BFS traversal, returning <code>None</code> early when it can&rsquo;t
+traverse any further and hasn&rsquo;t reached the destination node.
 </p>
 
 <div class="org-src-container">
@@ -355,7 +355,7 @@ traverse any further and hasn't reached the destination node.
 </div>
 
 <p>
-Here's how I tested it:
+Here&rsquo;s how I tested it:
 </p>
 <pre class="example">
 utop[2]&gt; Graph.route;;

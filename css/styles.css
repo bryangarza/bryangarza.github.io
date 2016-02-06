@@ -1,19 +1,30 @@
 body {
-  font-family: "Helvetica Neue",sans-serif;
+  font-family: "Merriweather", serif
+  /* font-family: "Helvetica Neue",sans-serif; */
   /* font-family: Georgia,"Times New Roman",Times,serif; */
   text-rendering: optimizeLegibility;
   color: #333;
   /* letter-spacing: 0.02em; */
-  line-height: 24px;
-  background-color: #ffffff;
-  font-size: 18px;
+  /* line-height: 24px; */
+  /* line-height: 1.7em; */
+  line-height: 130%;
+  /* background-color: #f5f8fa; */
+  background-color: #fff;
+  color: #000;
+  font-size: 21px;
   max-width: 680px;
   margin-left: 4%;
   margin-right: 4%;
 }
 
-h1, h2, h3, h4, h5 { color: #444 }
+h1, h2, h3, h4, h5 {
+  color: #444
+}
 h2, h3, h4, h5 { font-weight: normal }
+
+header, div#postamble, h1, h2, h3, h4, h5 {
+  font-family: "Helvetica Neue", sans-serif;
+}
 
 a {
   text-decoration: none;
@@ -37,17 +48,14 @@ h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited { color: #0
 
 h1 {
   line-height: 120%;
-  font-size: 1.5em;
   font-weight: normal;
 }
 
 .timestamp {
   color: #444;
-  font-size: .6em;
 }
 
 div#preamble > h1 {
-  font-size: 1.6em;
   font-weight: bold;
 }
 
@@ -70,7 +78,7 @@ span.timestamp-wrapper {
 
 div.back-to-index {
   margin-top: 0;
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 h2 > span a:link {
@@ -81,15 +89,19 @@ h2 > span a:visited {
   color: #900;
 }
 
-.title { text-align: left; }
-h2     { font-size: 1.4em; }
-h3     { font-size: 1.3em; }
-h4     { font-size: 1.2em; }
-h5     { font-size: 1.1em; }
-kbd    { font-size: 12px; }
-ul, ol { line-height: 1.1em; }
-hr     { margin-left: 0; }
-dd     { margin-left: 25px; }
+div#preamble > h1 { font-size: 1.6em; }
+.title            { text-align: left; }
+.timestamp        { font-size: .6em; }
+h1                { font-size: 1.5em; }
+header > h1       { font-size: 23px; }
+h2                { font-size: 23px; }
+h3                { font-size: 23px; }
+/* h4                { font-size: 1.2em; }
+   h5                { font-size: 1.1em; } */
+kbd               { font-size: 12px; }
+ul, ol            { line-height: 1.1em; }
+hr                { margin-left: 0; }
+dd                { margin-left: 25px; }
 
 h3 {
   line-height: 120%;
@@ -121,15 +133,24 @@ pre.src, pre.example, code {
 pre.src, pre.example {
   overflow-x: auto;
   overflow-y: hidden;
-  border: none;
-  background-color: #f7f7f7;
+  border-top: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+  border-left: none;
+  border-right: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   margin: 0;
   padding-left: 1em;
+  /* font-size: 13px; */
   font-size: 13px;
-  line-height: 115%;
+  line-height: 130%;
+}
+
+div.bottom-post {
+  padding-bottom: 10px;
 }
 
 

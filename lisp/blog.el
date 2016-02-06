@@ -29,6 +29,7 @@
            :with-timestamps t
            :with-tables t
            :section-numbers nil
+           :with-smart-quotes t
            ;; :html-head-include-default-style nil
            ;; :html-head-include-scripts nil
 
