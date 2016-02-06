@@ -76,11 +76,6 @@ span.timestamp-wrapper {
   display: inline-block;
 }
 
-div.back-to-index {
-  margin-top: 0;
-  padding-top: 15px;
-}
-
 h2 > span a:link {
   color: #f00;
 }

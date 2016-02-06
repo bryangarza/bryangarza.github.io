@@ -5,7 +5,7 @@
 #+OPTIONS: title:nil
 
 #+BEGIN_HTML
-<header><h1 class="title"><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+<header><h1 class="title"><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h1></header>
 #+END_HTML
 
 This is my solution to Cracking The Coding Interview problem 4.2.

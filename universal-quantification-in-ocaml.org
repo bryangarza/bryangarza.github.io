@@ -5,7 +5,7 @@
 #+OPTIONS: title:nil
 
 #+BEGIN_HTML
-<header><h1 class="title"><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(Tuesday, February 2)</span></span></h1><div class="back-to-index"><a href="./">Back to index</a></div></header>
+<header><h1 class="title"><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(Tuesday, February 2)</span></span></h1></header>
 #+END_HTML
 
 The difference between OCaml's type signatures and type annotations is quite

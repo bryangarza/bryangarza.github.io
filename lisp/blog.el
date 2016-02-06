@@ -136,9 +136,7 @@
         #'insert)
       (html-lite-write-tree-single-line
        (html-header
-        (html-h1 :class "title" my-html-link-and-span)
-        (html-div :class "back-to-index"
-                  (html-a :href "./" "Back to index"))))
+        (html-h1 :class "title" my-html-link-and-span)))
       (insert "\n#+END_HTML\n\n")
       (when (file-writable-p absfile)
         (write-region (point-min)

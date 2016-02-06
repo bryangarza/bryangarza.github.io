@@ -5,7 +5,7 @@
 #+OPTIONS: title:nil H:5
 
 I'm a computer scientist interested in functional programming. My favorite
-programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://github.com/bryangarza][Github]])
+programming languages are OCaml, Haskell, Racket, and Emacs Lisp. ([[https://github.com/bryangarza][GitHub]])
 
 * All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 #+BEGIN_HTML
