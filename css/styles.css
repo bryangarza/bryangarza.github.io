@@ -3,7 +3,6 @@ body {
   /* font-family: "Helvetica Neue",sans-serif; */
   /* font-family: Georgia,"Times New Roman",Times,serif; */
   text-rendering: optimizeLegibility;
-  color: #333;
   /* letter-spacing: 0.02em; */
   /* line-height: 24px; */
   /* line-height: 1.7em; */
@@ -27,24 +26,30 @@ header, div#postamble, h1, h2, h3, h4, h5 {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:link {
-  color: #f00;
+  color: #000;
 }
-a:visited {
-  color: #900;
+a:visited, p a:visited {
+  color: #333;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 h1 a:hover {
   text-decoration: none;
 }
 
-h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link { color: #000 }
-h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited { color: #000 }
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link {
+  color: #000;
+  text-decoration: none;
+}
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited {
+  color: #000;
+  text-decoration: none;
+}
 
 h1 {
   line-height: 120%;
@@ -77,11 +82,14 @@ span.timestamp-wrapper {
 }
 
 h2 > span a:link {
-  color: #f00;
+  text-decoration: underline;
 }
 
 h2 > span a:visited {
-  color: #900;
+  color: #333;
+}
+h2 > span a:hover {
+  text-decoration: none;
 }
 
 div#preamble > h1 { font-size: 1.6em; }
