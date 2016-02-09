@@ -1,0 +1,48 @@
+#+TITLE: Adding Syntax Extensions To An OCaml Project
+#+DATE: [2016-02-08 Mon]
+#+KEYWORDS: ocaml, syntax extensions, oasis
+#+DESCRIPTION: How to start using syntax extensions
+#+OPTIONS: title:nil
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./adding-syntax-extensions-to-an-ocaml-project.html">Adding Syntax Extensions To An OCaml Project</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 8, 2016)</span></span></h1></header>
+#+END_HTML
+
+Here's the set of steps needed to start using syntax extensions. I'll be using
+[[https://github.com/janestreet/sexplib][sexplib]] as the example.
+
+First, you have to add the extension to your =.merlin= file:
+#+BEGIN_EXAMPLE
+PKG core yojson lwt cohttp cohttp.lwt
+EXT sexplib.syntax
+#+END_EXAMPLE
+
+Now Merlin's minor mode won't throw up errors when you save. Next up is
+compiling the project. I'm using [[http://oasis.forge.ocamlcore.org/][Oasis]]. Add =sexplib= and its =.syntax= file to the
+=BuildDepends= in the =_oasis= file:
+
+#+BEGIN_EXAMPLE
+(other stuff)
+
+Executable myprogram
+  Path: src
+  BuildTools: ocamlbuild
+  MainIs: main.ml
+  CompiledObject: best
+  BuildDepends:
+    core,
+>   sexplib,
+>   sexplib.syntax,
+    threads,
+    yojson,
+    lwt,
+    cohttp,
+    cohttp.lwt
+#+END_EXAMPLE
+
+After that, call =oasis= to add in the new dependencies. I use
+#+BEGIN_EXAMPLE
+oasis setup -setup-update dynamic
+#+END_EXAMPLE
+
+Run =make= again, and the project should build using =sexplib=!
