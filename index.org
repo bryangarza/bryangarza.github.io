@@ -8,7 +8,15 @@ I'm a computer scientist interested in functional programming and compilers. My
 favorite programming languages are OCaml, Haskell, Racket, and Emacs
 Lisp. ([[https://github.com/bryangarza][GitHub]])
 
-* All Posts @@html:<span><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
+* All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
+# #+BEGIN_HTML
+# <div class="outline-3"><h3><a href="./automated-theorem-proving-work-log.html">Automated Theorem Proving Work Log</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 12, 2016)</span></span></h3>
+# #+END_HTML
+# #+INCLUDE: "automated-theorem-proving-work-log.org" :lines "11-"
+# #+BEGIN_HTML
+# </div>
+# #+END_HTML
+
 #+BEGIN_HTML
 <div class="outline-3"><h3><a href="./adding-syntax-extensions-to-an-ocaml-project.html">Adding Syntax Extensions To An OCaml Project</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 8, 2016)</span></span></h3>
 #+END_HTML

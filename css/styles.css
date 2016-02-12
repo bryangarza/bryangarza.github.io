@@ -70,7 +70,7 @@ h2 {
 }
 
 /* h2 > span, .timestamp { */
-h2 > span {
+h2 > span.archive {
   position: absolute;
   font-size: 18px;
   padding-left: .5em;
@@ -98,7 +98,7 @@ div#preamble > h1 { font-size: 1.6em; }
 h1                { font-size: 1.5em; }
 header > h1       { font-size: 23px; }
 h2                { font-size: 23px; }
-h3                { font-size: 23px; }
+h3                { font-size: 21px; }
 /* h4                { font-size: 1.2em; }
    h5                { font-size: 1.1em; } */
 kbd               { font-size: 12px; }

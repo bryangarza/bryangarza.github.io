@@ -1,0 +1,115 @@
+#+TITLE: Automated Theorem Proving Work Log
+#+DATE: [2016-02-12 Fri]
+#+KEYWORDS: automated theorem proving
+#+DESCRIPTION: Learning about automated theorem proving
+#+OPTIONS: title:nil num:t
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./automated-theorem-proving-work-log.html">Automated Theorem Proving Work Log</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 12, 2016)</span></span></h1></header>
+#+END_HTML
+
+* Introduction
+** What is logical reasoning?
+Logical reasoning is all about abstracting forms of argument, and making sense
+of them without taking into account assumptions about the properties of the
+objects we are reasoning about.
+
+** Calculemus!
+Leibniz wanted there to be a system whereby one could translate anything into a
+universal language (/characteristica universalis/), and then decide on whether the
+claims are true via a calculus of reasoning (/calculus ratiocinator/).
+
+Even though it would be a long time before computing machines made this sort of
+system possible, some early calculating machines were built, including one by
+Leibniz that could do multiplication.
+
+** Symbolism
+It's important to choose a symbolic notation that makes it easier to reason
+about the logic, same as mathematical notation improved our ability to process
+calculations. Symbolic notation is also unambiguous, an important property
+missing from everyday language.
+
+** Boole's algebra of logic
+After algebra was created, Boolean invented Boolean logic, molding his notation
+to conform to the algebraic laws used in mathematics. By doing this he was able
+to harness an existing framework and not have to formulate everything from
+scratch. Some early machines for performing Boolean calculations were created
+in the 1700 and 1800s.
+
+** Syntax and semantics
+Syntax is the grammar of the language, with which we know we are forming well
+constructed expressions. The semantics tell us the meaning of the expressions in
+the language. "Translated into linguistic jargon, choosing an interpretation
+amounts exactly to giving a semantics to the language." (pg. 10)
+
+Metalogic is reasoning about a logic system.
+
+You can take the concrete syntax of an expression, its literal symbolic
+representation, and express it better using an abstract expression. The book
+gives an example of a tree (AST) being abstract syntax. It's pretty common to
+convert between the concrete and the abstract, usually by writing a parser and
+prettyprinter.
+
+** Symbolic computation and OCaml
+This chapter just explains how to write a parse arithmetic expressions and
+simplify them OCaml -- super easy. It essentially boils down to writing a sum
+type that encompasses all the different symbols, and then a recursive function
+that matches on the structure of the ~Expr~ type and combines terms.
+
+** Parsing
+First you have to do lexing, which is breaking down the string expression into
+tokens, then convert the tokens into an AST. The example lexer just scans left
+to right, matching on different types of symbols. I think it might be better to
+write the parser with the Menhir library. Anyways, parsing is not really the
+important part of the theorem prover anyways, so an efficient implementation
+isn't really needed. It's not like we're parsing massive expressions anyways.
+
+** Prettyprinting
+Prettyprinting amounts to pattern matching on different symbols and printing its
+terms with some extra notation, such as parentheses, to aid readability. This
+chapter also briefly explains how to add our printer to the OCaml REPL so that
+certain types are passed through that printer instead of the default.
+
+* Propositional logic
+** The syntax of propositional logic
+We're going to build up our propositional logic representation using the
+constant propositions ~False~ and ~True~, atomic formula ~Atom p~, unary operator ~Not~,
+and binary connectives ~And~, ~Or~, ~Imp~, and ~Iff~.
+
+Our type:
+#+BEGIN_SRC ocaml
+type 'a formula =
+  | False
+  | Atom of 'a
+  | Not of 'a formula
+  | And of 'a formula * 'a formula
+  | Or of 'a formula * 'a formula
+  | Imp of 'a formula * 'a formula
+  | Iff of 'a formula * 'a formula
+  | Forall of string * 'a formula
+  | Exists of string * 'a formula
+#+END_SRC
+
+** The semantics of propositional logic
+This chapter goes into how to write an ~eval~ function that takes an expression
+and reduces it, as well as a function to print a truth table for an expression.
+
+In the next chapter we're going to go into more detail about /quantifiers/, that
+is, "for all /x/", to be explicit about which properties apply universally.
+
+** Validity, satisfiability, and tautology
+"We say that a valuation /v/ /satisfies/ a formula /p/ if ~eval p v = true~."
+
+Book gives definitions for tautology (logically valid), satisfiable, and
+unsatisfiable/contradiction.
+
+"Substituting in tautologies yields a tautology."
+# ** The De Morgan laws, adequacy and duality
+# ** Simplification and negation normal forms
+# ** Disjunctive and conjunctive normal forms
+# ** Applications of propositional logic
+# ** Definitional CNF
+# ** The Davis-Putnam procedure
+# ** The Stalmarck's method
+# ** Binary decision diagrams
+# ** Compactness
