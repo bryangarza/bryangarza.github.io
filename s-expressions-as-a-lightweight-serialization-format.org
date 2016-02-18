@@ -29,7 +29,7 @@ type book = {
 A ~sexp_of_book~ function is automatically generated.
 
 Now racket can receive:
-#+BEGIN_SRC lisp
+#+BEGIN_SRC scheme
 '((title "Purely functional data structures")
   (authors ("Chris Okasaki"))
   (pubdate 1999)
@@ -38,7 +38,7 @@ Now racket can receive:
 #+END_SRC
 
 I take this sexp, and create a =book= struct:
-#+BEGIN_SRC lisp
+#+BEGIN_SRC scheme
 (struct book (title authors pubdate publishers subjects))
 
 (define (isbn-lookup isbn)
@@ -47,12 +47,12 @@ I take this sexp, and create a =book= struct:
          [aux (with-output-to-string (λ () (system cmd)))]
          [sp (open-input-string aux)] ; string port
          [res (read sp)]
-         [data (map (lambda (x) (cadr x)) res)])
+         [data (map cadr res)])
     (apply book data)))
 #+END_SRC
 
 Finally, we can test it out on the REPL to make sure it works:
-#+BEGIN_SRC lisp
+#+BEGIN_SRC scheme
 racket@app.rkt> (isbn-lookup "0521663504")
 #<book>
 

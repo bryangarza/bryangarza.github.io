@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-17 Wed 22:38 -->
+<!-- 2016-02-18 Thu 00:10 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -190,7 +190,7 @@ Now racket can receive:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-lisp">'<span style="color: #707183;">(</span><span style="color: #7388d6;">(</span>title <span style="color: #8b2252;">"Purely functional data structures"</span><span style="color: #7388d6;">)</span>
+<pre class="src src-scheme">'<span style="color: #707183;">(</span><span style="color: #7388d6;">(</span>title <span style="color: #8b2252;">"Purely functional data structures"</span><span style="color: #7388d6;">)</span>
   <span style="color: #7388d6;">(</span>authors <span style="color: #909183;">(</span><span style="color: #8b2252;">"Chris Okasaki"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
   <span style="color: #7388d6;">(</span>pubdate 1999<span style="color: #7388d6;">)</span>
   <span style="color: #7388d6;">(</span>publishers <span style="color: #909183;">(</span><span style="color: #8b2252;">"Cambridge University Press"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
@@ -203,15 +203,15 @@ I take this sexp, and create a <code>book</code> struct:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span style="color: #707183;">(</span>struct book <span style="color: #7388d6;">(</span>title authors pubdate publishers subjects<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span style="color: #707183;">(</span>struct book <span style="color: #7388d6;">(</span>title authors pubdate publishers subjects<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 
-<span style="color: #707183;">(</span>define <span style="color: #7388d6;">(</span>isbn-lookup isbn<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span>[hl <span style="color: #8b2252;">"~/code/ocaml/homelib/homelib.native"</span>]
-         [cmd <span style="color: #709870;">(</span>string-join <span style="color: #907373;">(</span>list hl isbn<span style="color: #907373;">)</span><span style="color: #709870;">)</span>]
-         [aux <span style="color: #709870;">(</span><span style="color: #a020f0;">with-output-to-string</span> <span style="color: #907373;">(</span>&#955; <span style="color: #6276ba;">()</span> <span style="color: #6276ba;">(</span>system cmd<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>]
-         [sp <span style="color: #709870;">(</span>open-input-string aux<span style="color: #709870;">)</span>] <span style="color: #b22222;">; string port</span>
-         [res <span style="color: #709870;">(</span>read sp<span style="color: #709870;">)</span>]
-         [data <span style="color: #709870;">(</span>map <span style="color: #907373;">(</span><span style="color: #a020f0;">lambda</span> <span style="color: #6276ba;">(</span>x<span style="color: #6276ba;">)</span> <span style="color: #6276ba;">(</span>cadr x<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span> res<span style="color: #709870;">)</span>]<span style="color: #909183;">)</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">isbn-lookup</span> isbn<span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>hl <span style="color: #8b2252;">"~/code/ocaml/homelib/homelib.native"</span><span style="color: #709870;">]</span>
+         <span style="color: #709870;">[</span>cmd <span style="color: #907373;">(</span>string-join <span style="color: #6276ba;">(</span>list hl isbn<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span>
+         <span style="color: #709870;">[</span>aux <span style="color: #907373;">(</span>with-output-to-string <span style="color: #6276ba;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #858580;">()</span> <span style="color: #858580;">(</span>system cmd<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span>
+         <span style="color: #709870;">[</span>sp <span style="color: #907373;">(</span>open-input-string aux<span style="color: #907373;">)</span><span style="color: #709870;">]</span> <span style="color: #b22222;">; </span><span style="color: #b22222;">string port</span>
+         <span style="color: #709870;">[</span>res <span style="color: #907373;">(</span>read sp<span style="color: #907373;">)</span><span style="color: #709870;">]</span>
+         <span style="color: #709870;">[</span>data <span style="color: #907373;">(</span><span style="color: #a020f0;">map</span> cadr res<span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span>apply book data<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
@@ -221,7 +221,7 @@ Finally, we can test it out on the REPL to make sure it works:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-lisp">racket@app.rkt&gt; <span style="color: #707183;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme">racket@app.rkt&gt; <span style="color: #707183;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #707183;">)</span>
 #&lt;book&gt;
 
 racket@app.rkt&gt; <span style="color: #707183;">(</span>book-title <span style="color: #7388d6;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
