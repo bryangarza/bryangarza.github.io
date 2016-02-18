@@ -1,7 +1,8 @@
 #+TITLE: Archive
 
+   + [[file:s-expressions-as-a-lightweight-serialization-format.org][S-expressions as a Lightweight Serialization Format]]
+   + [[file:adding-syntax-extensions-to-an-ocaml-project.org][Adding Syntax Extensions To An OCaml Project]]
    + [[file:on-the-importance-of-enforcing-invariants.org][On The Importance Of Enforcing Invariants]]
    + [[file:universal-quantification-in-ocaml.org][Universal Quantification in OCaml]]
    + [[file:automating-blog-posts-with-org-mode.org][Automating Blog Posts With Org-mode]]
    + [[file:basic-graph-traversal-in-ocaml.org][Basic Graph Traversal in OCaml]]
-   + [[file:index.org][Home]]

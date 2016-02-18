@@ -1,0 +1,66 @@
+#+TITLE: S-expressions as a Lightweight Serialization Format
+#+DATE: [2016-02-17 Wed]
+#+KEYWORDS: s-expressions, sexprs, lisp, ocaml, ipc, serialization
+#+DESCRIPTION: How to use sexprs for inter-process communication
+#+OPTIONS: title:nil
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h1></header>
+#+END_HTML
+
+I've been writing a desktop application that uses OCaml for the backend, and
+Racket for the GUI frontend. To communicate between the two, I call the OCaml
+program as a subprocess from Racket, and have s-expressions be the serialization
+mechanism that both languages can understand. Jane Street's [[https://github.com/janestreet/core][Core]], along with the
+=sexplib= syntax extension mentioned in my previous post, offer an easy way to
+translate OCaml types to sexps that Racket can then read.
+
+With a type like:
+#+BEGIN_SRC ocaml
+type book = {
+  title        : string;
+  authors      : string list;
+  pubdate      : string;
+  publishers   : string list;
+  subjects     : string list
+} with sexp
+#+END_SRC
+
+Racket can receive:
+#+BEGIN_SRC lisp
+'((title "Purely functional data structures")
+  (authors ("Chris Okasaki"))
+  (pubdate 1999)
+  (publishers ("Cambridge University Press"))
+  (subjects ("Functional programming languages" "Data structures (Computer science)")))
+#+END_SRC
+
+I take this sexp, and create a =book= struct:
+#+BEGIN_SRC lisp
+(struct book (title authors pubdate publishers subjects))
+
+(define (isbn-lookup isbn)
+  (let* ([hl "~/code/ocaml/homelib/homelib.native"]
+         [cmd (string-join (list hl isbn))]
+         [aux (with-output-to-string (λ () (system cmd)))]
+         [sp (open-input-string aux)] ; string port
+         [res (read sp)]
+         [data (map (lambda (x) (cadr x)) res)])
+    (apply book data)))
+#+END_SRC
+
+Finally, we can test it out on the REPL to make sure it works:
+#+BEGIN_EXAMPLE
+racket@app.rkt> (isbn-lookup "0521663504")
+#<book>
+
+racket@app.rkt> (book-title (isbn-lookup "0521663504"))
+"Purely functional data structures"
+
+racket@app.rkt> (book-subjects (isbn-lookup "0521663504"))
+'("Functional programming languages" "Data structures (Computer science)")
+#+END_EXAMPLE
+
+Similarly, I can work in the other direction, and pass Racket s-expressions to
+OCaml, and using sexplib, convert them back to OCaml types. What a time to be
+alive!

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-12 Fri 10:43 -->
+<!-- 2016-02-17 Wed 22:15 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -156,6 +156,83 @@ Lisp. (<a href="https://github.com/bryangarza">GitHub</a>)
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">All Posts <span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
+<div class="outline-3"><h3><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h3>
+<p>
+I&rsquo;ve been writing a desktop application that uses OCaml for the backend, and
+Racket for the GUI frontend. To communicate between the two, I call the OCaml
+program as a subprocess from Racket, and have s-expressions be the serialization
+mechanism that both languages can understand. Jane Street&rsquo;s <a href="https://github.com/janestreet/core">Core</a>, along with the
+<code>sexplib</code> syntax extension mentioned in my previous post, offer an easy way to
+translate OCaml types to sexps that Racket can then read.
+</p>
+
+<p>
+With a type like:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">book</span> <span style="color: #a52a2a;">=</span> <span style="color: #707183;">{</span>
+  title        <span style="color: #a52a2a;">:</span> string<span style="color: #a52a2a;">;</span>
+  authors      <span style="color: #a52a2a;">:</span> string list<span style="color: #a52a2a;">;</span>
+  pubdate      <span style="color: #a52a2a;">:</span> string<span style="color: #a52a2a;">;</span>
+  publishers   <span style="color: #a52a2a;">:</span> string list<span style="color: #a52a2a;">;</span>
+  subjects     <span style="color: #a52a2a;">:</span> string list
+<span style="color: #707183;">}</span> <span style="color: #a020f0;">with</span> sexp
+</pre>
+</div>
+
+<p>
+Racket can receive:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp">'<span style="color: #707183;">(</span><span style="color: #7388d6;">(</span>title <span style="color: #8b2252;">"Purely functional data structures"</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>authors <span style="color: #909183;">(</span><span style="color: #8b2252;">"Chris Okasaki"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>pubdate 1999<span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>publishers <span style="color: #909183;">(</span><span style="color: #8b2252;">"Cambridge University Press"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>subjects <span style="color: #909183;">(</span><span style="color: #8b2252;">"Functional programming languages"</span> <span style="color: #8b2252;">"Data structures (Computer science)"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+I take this sexp, and create a <code>book</code> struct:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span style="color: #707183;">(</span>struct book <span style="color: #7388d6;">(</span>title authors pubdate publishers subjects<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span>define <span style="color: #7388d6;">(</span>isbn-lookup isbn<span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span>[hl <span style="color: #8b2252;">"~/code/ocaml/homelib/homelib.native"</span>]
+         [cmd <span style="color: #709870;">(</span>string-join <span style="color: #907373;">(</span>list hl isbn<span style="color: #907373;">)</span><span style="color: #709870;">)</span>]
+         [aux <span style="color: #709870;">(</span><span style="color: #a020f0;">with-output-to-string</span> <span style="color: #907373;">(</span>&#955; <span style="color: #6276ba;">()</span> <span style="color: #6276ba;">(</span>system cmd<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>]
+         [sp <span style="color: #709870;">(</span>open-input-string aux<span style="color: #709870;">)</span>] <span style="color: #b22222;">; string port</span>
+         [res <span style="color: #709870;">(</span>read sp<span style="color: #709870;">)</span>]
+         [data <span style="color: #709870;">(</span>map <span style="color: #907373;">(</span><span style="color: #a020f0;">lambda</span> <span style="color: #6276ba;">(</span>x<span style="color: #6276ba;">)</span> <span style="color: #6276ba;">(</span>cadr x<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span> res<span style="color: #709870;">)</span>]<span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>apply book data<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Finally, we can test it out on the REPL to make sure it works:
+</p>
+<pre class="example">
+racket@app.rkt&gt; (isbn-lookup "0521663504")
+#&lt;book&gt;
+
+racket@app.rkt&gt; (book-title (isbn-lookup "0521663504"))
+"Purely functional data structures"
+
+racket@app.rkt&gt; (book-subjects (isbn-lookup "0521663504"))
+'("Functional programming languages" "Data structures (Computer science)")
+</pre>
+
+<p>
+Similarly, I can work in the other direction, and pass Racket s-expressions to
+OCaml, and using sexplib, convert them back to OCaml types. What a time to be
+alive!
+</p>
+</div>
+
 <div class="outline-3"><h3><a href="./adding-syntax-extensions-to-an-ocaml-project.html">Adding Syntax Extensions To An OCaml Project</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 8, 2016)</span></span></h3>
 <p>
 Here&rsquo;s the set of steps needed to start using syntax extensions. I&rsquo;ll be using
