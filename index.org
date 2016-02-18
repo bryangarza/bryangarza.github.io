@@ -4,8 +4,8 @@
 #+EMAIL: brygarza@gmail.com
 #+OPTIONS: title:nil H:5
 
-I'm a computer scientist interested in functional programming and compilers. My
-favorite programming languages are OCaml, Haskell, Racket, and Emacs
+I'm a computer scientist exploring functional programming, type theory, and
+logic. My favorite languages are OCaml, Haskell, Racket, and Emacs
 Lisp. ([[https://github.com/bryangarza][GitHub]])
 
 * All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
