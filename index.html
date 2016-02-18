@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-17 Wed 22:15 -->
+<!-- 2016-02-17 Wed 22:21 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -215,16 +215,18 @@ I take this sexp, and create a <code>book</code> struct:
 <p>
 Finally, we can test it out on the REPL to make sure it works:
 </p>
-<pre class="example">
-racket@app.rkt&gt; (isbn-lookup "0521663504")
+<div class="org-src-container">
+
+<pre class="src src-lisp">racket@app.rkt&gt; <span style="color: #707183;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #707183;">)</span>
 #&lt;book&gt;
 
-racket@app.rkt&gt; (book-title (isbn-lookup "0521663504"))
-"Purely functional data structures"
+racket@app.rkt&gt; <span style="color: #707183;">(</span>book-title <span style="color: #7388d6;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span style="color: #8b2252;">"Purely functional data structures"</span>
 
-racket@app.rkt&gt; (book-subjects (isbn-lookup "0521663504"))
-'("Functional programming languages" "Data structures (Computer science)")
+racket@app.rkt&gt; <span style="color: #707183;">(</span>book-subjects <span style="color: #7388d6;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+'<span style="color: #707183;">(</span><span style="color: #8b2252;">"Functional programming languages"</span> <span style="color: #8b2252;">"Data structures (Computer science)"</span><span style="color: #707183;">)</span>
 </pre>
+</div>
 
 <p>
 Similarly, I can work in the other direction, and pass Racket s-expressions to

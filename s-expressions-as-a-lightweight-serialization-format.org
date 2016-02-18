@@ -50,7 +50,7 @@ I take this sexp, and create a =book= struct:
 #+END_SRC
 
 Finally, we can test it out on the REPL to make sure it works:
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC lisp
 racket@app.rkt> (isbn-lookup "0521663504")
 #<book>
 
@@ -59,7 +59,7 @@ racket@app.rkt> (book-title (isbn-lookup "0521663504"))
 
 racket@app.rkt> (book-subjects (isbn-lookup "0521663504"))
 '("Functional programming languages" "Data structures (Computer science)")
-#+END_EXAMPLE
+#+END_SRC
 
 Similarly, I can work in the other direction, and pass Racket s-expressions to
 OCaml, and using sexplib, convert them back to OCaml types. What a time to be
