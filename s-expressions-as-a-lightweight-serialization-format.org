@@ -26,7 +26,9 @@ type book = {
 } with sexp
 #+END_SRC
 
-Racket can receive:
+A ~sexp_of_book~ function is automatically generated.
+
+Now racket can receive:
 #+BEGIN_SRC lisp
 '((title "Purely functional data structures")
   (authors ("Chris Okasaki"))
