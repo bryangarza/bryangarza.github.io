@@ -42,13 +42,13 @@ I take this sexp, and create a =book= struct:
 (struct book (title authors pubdate publishers subjects))
 
 (define (isbn-lookup isbn)
-  (let* ([hl "~/code/ocaml/homelib/homelib.native"]
-         [cmd (string-join (list hl isbn))]
-         [aux (with-output-to-string (λ () (system cmd)))]
-         [sp (open-input-string aux)] ; string port
-         [res (read sp)]
-         [data (map cadr res)])
-    (apply book data)))
+  (let ([cmd (string-join (list homelib-binary isbn))])
+    ((λ~>> process    ; -> '(stdout stdin proc-id stderr f)
+           car
+           read       ; from an input port
+           (map cadr) ; (k v) -> v
+           (apply book))
+     cmd)))
 #+END_SRC
 
 Finally, we can test it out on the REPL to make sure it works:

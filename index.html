@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-18 Thu 00:10 -->
+<!-- 2016-02-18 Thu 12:32 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -206,13 +206,13 @@ I take this sexp, and create a <code>book</code> struct:
 <pre class="src src-scheme"><span style="color: #707183;">(</span>struct book <span style="color: #7388d6;">(</span>title authors pubdate publishers subjects<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 
 <span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">isbn-lookup</span> isbn<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>hl <span style="color: #8b2252;">"~/code/ocaml/homelib/homelib.native"</span><span style="color: #709870;">]</span>
-         <span style="color: #709870;">[</span>cmd <span style="color: #907373;">(</span>string-join <span style="color: #6276ba;">(</span>list hl isbn<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span>
-         <span style="color: #709870;">[</span>aux <span style="color: #907373;">(</span>with-output-to-string <span style="color: #6276ba;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #858580;">()</span> <span style="color: #858580;">(</span>system cmd<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span>
-         <span style="color: #709870;">[</span>sp <span style="color: #907373;">(</span>open-input-string aux<span style="color: #907373;">)</span><span style="color: #709870;">]</span> <span style="color: #b22222;">; </span><span style="color: #b22222;">string port</span>
-         <span style="color: #709870;">[</span>res <span style="color: #907373;">(</span>read sp<span style="color: #907373;">)</span><span style="color: #709870;">]</span>
-         <span style="color: #709870;">[</span>data <span style="color: #907373;">(</span><span style="color: #a020f0;">map</span> cadr res<span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>apply book data<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>cmd <span style="color: #907373;">(</span>string-join <span style="color: #6276ba;">(</span>list homelib-binary isbn<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span><span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span>~&gt;&gt; process    <span style="color: #b22222;">; </span><span style="color: #b22222;">-&gt; '(stdout stdin proc-id stderr f)</span>
+           car
+           read       <span style="color: #b22222;">; </span><span style="color: #b22222;">from an input port</span>
+           <span style="color: #907373;">(</span><span style="color: #a020f0;">map</span> cadr<span style="color: #907373;">)</span> <span style="color: #b22222;">; </span><span style="color: #b22222;">(k v) -&gt; v</span>
+           <span style="color: #907373;">(</span>apply book<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+     cmd<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
