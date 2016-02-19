@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-02-18 Thu 12:32 -->
+<!-- 2016-02-18 Thu 17:12 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -372,31 +372,41 @@ post, and takes care of the rest.
   <span style="color: #8b2252;">"Create a new post"</span>
   <span style="color: #7388d6;">(</span>interactive <span style="color: #8b2252;">"sTitle: \nsKeywords: \nsDescription: "</span><span style="color: #7388d6;">)</span>
   <span style="color: #b22222;">;; </span><span style="color: #b22222;">(message "Keywords are: %s" keywords)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>filename-prepared <span style="color: #907373;">(</span>trim-string
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>filename-prepared <span style="color: #907373;">(</span>string-trim
                              <span style="color: #6276ba;">(</span>replace-regexp-in-string <span style="color: #8b2252;">" "</span> <span style="color: #8b2252;">"-"</span> <span style="color: #858580;">(</span>downcase title<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
          <span style="color: #709870;">(</span>relfile <span style="color: #907373;">(</span>concat filename-prepared <span style="color: #8b2252;">".org"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>relfile-html <span style="color: #907373;">(</span>concat <span style="color: #8b2252;">"./"</span> filename-prepared <span style="color: #8b2252;">".html"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
          <span style="color: #709870;">(</span>absfile <span style="color: #907373;">(</span>concat bryan/blog-blogdir relfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>date <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"[%Y-%m-%d %a]"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+         <span style="color: #709870;">(</span>date <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"[%Y-%m-%d %a]"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>date-day-not-padded <span style="color: #907373;">(</span>string-trim <span style="color: #6276ba;">(</span>format-time-string <span style="color: #8b2252;">"%e"</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>mon <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"%B"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>yr <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"%Y"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>date-human-readable
+          <span style="color: #907373;">(</span>concat <span style="color: #8b2252;">"("</span> mon <span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">" %s, "</span> date-day-not-padded<span style="color: #6276ba;">)</span> yr <span style="color: #8b2252;">")"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+         <span style="color: #709870;">(</span>my-html-link-and-span
+          `<span style="color: #907373;">(</span>,<span style="color: #6276ba;">(</span>html-a
+              <span style="color: #483d8b;">:href</span> relfile-html title<span style="color: #6276ba;">)</span>
+            ,<span style="color: #6276ba;">(</span>html-span <span style="color: #8b2252;">" "</span><span style="color: #6276ba;">)</span>
+            ,<span style="color: #6276ba;">(</span>html-span
+              <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"timestamp-wrapper"</span>
+              <span style="color: #858580;">(</span>html-span
+               <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"timestamp"</span>
+               date-human-readable<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
 
     <span style="color: #909183;">(</span><span style="color: #a020f0;">with-current-buffer</span> <span style="color: #709870;">(</span>find-file-noselect bryan/blog-indexfile<span style="color: #709870;">)</span>
       <span style="color: #709870;">(</span>goto-char <span style="color: #907373;">(</span>point-min<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>search-forward <span style="color: #8b2252;">"* All Posts"</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"\n** [[./%s][%s]]\n"</span> relfile title<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"#+INCLUDE: \"%s\" :lines \"8-\""</span> relfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>search-forward <span style="color: #8b2252;">"&gt;@@"</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+BEGIN_HTML\n"</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>html-lite-write-tree-single-line
+       <span style="color: #907373;">(</span>butlast
+        <span style="color: #6276ba;">(</span>html-div
+         <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"outline-3"</span>
+         <span style="color: #858580;">(</span>html-h3
+          my-html-link-and-span<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+END_HTML\n"</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"#+INCLUDE: \"%s\" :lines \"11-\""</span> relfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>bryan/org-escape-html <span style="color: #8b2252;">"&lt;/div&gt;"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
       <span style="color: #709870;">(</span><span style="color: #a020f0;">with-temp-message</span> <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"Writing to %s"</span> bryan/blog-indexfile<span style="color: #907373;">)</span>
-        <span style="color: #907373;">(</span>save-buffer<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>message <span style="color: #8b2252;">"Writing file...done"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-
-    <span style="color: #909183;">(</span><span style="color: #a020f0;">with-current-buffer</span> <span style="color: #709870;">(</span>find-file-noselect bryan/blog-rssfile<span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>goto-char <span style="color: #907373;">(</span>point-min<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>-each `<span style="color: #907373;">(</span>,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"* [[./%s][%s]]\n"</span> relfile title<span style="color: #6276ba;">)</span> <span style="color: #b22222;">; </span><span style="color: #b22222;">heading level 1</span>
-               <span style="color: #8b2252;">":PROPERTIES:\n"</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">":RSS_PERMALINK: %s\n"</span> <span style="color: #858580;">(</span>concat filename-prepared <span style="color: #8b2252;">".html"</span><span style="color: #858580;">)</span><span style="color: #6276ba;">)</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">":PUBDATE: %s\n"</span> <span style="color: #858580;">(</span>format-time-string <span style="color: #8b2252;">"&lt;%Y-%m-%d %a&gt;"</span><span style="color: #858580;">)</span><span style="color: #6276ba;">)</span>
-               <span style="color: #8b2252;">":END:\n"</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+INCLUDE: \"%s\" :lines \"8-\"\n"</span> relfile<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span>
-        'insert<span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span><span style="color: #a020f0;">with-temp-message</span> <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"Writing to %s"</span> bryan/blog-rssfile<span style="color: #907373;">)</span>
         <span style="color: #907373;">(</span>save-buffer<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
       <span style="color: #709870;">(</span>message <span style="color: #8b2252;">"Writing file...done"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
 
@@ -405,16 +415,20 @@ post, and takes care of the rest.
                ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+DATE: %s\n"</span> date<span style="color: #6276ba;">)</span>
                ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+KEYWORDS: %s\n"</span> keywords<span style="color: #6276ba;">)</span>
                ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+DESCRIPTION: %s\n"</span> description<span style="color: #6276ba;">)</span>
-               <span style="color: #8b2252;">"\n[[./][Back to index]]\n\n"</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"%s\n\n"</span> date<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span>
-        'insert<span style="color: #709870;">)</span>
+               <span style="color: #8b2252;">"#+OPTIONS: title:nil\n\n"</span>
+               <span style="color: #8b2252;">"#+BEGIN_HTML\n"</span><span style="color: #907373;">)</span>
+        #'insert<span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>html-lite-write-tree-single-line
+       <span style="color: #907373;">(</span>html-header
+        <span style="color: #6276ba;">(</span>html-h1 <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"title"</span> my-html-link-and-span<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
+      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+END_HTML\n\n"</span><span style="color: #709870;">)</span>
       <span style="color: #709870;">(</span><span style="color: #a020f0;">when</span> <span style="color: #907373;">(</span>file-writable-p absfile<span style="color: #907373;">)</span>
         <span style="color: #907373;">(</span>write-region <span style="color: #6276ba;">(</span>point-min<span style="color: #6276ba;">)</span>
                       <span style="color: #6276ba;">(</span>point-max<span style="color: #6276ba;">)</span>
                       absfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
     <span style="color: #909183;">(</span>find-file absfile<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
   <span style="color: #7388d6;">(</span>goto-char <span style="color: #909183;">(</span>point-max<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>message <span style="color: #8b2252;">"Generated template."</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+  <span style="color: #7388d6;">(</span>message <span style="color: #8b2252;">"Generated template"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 </div>
