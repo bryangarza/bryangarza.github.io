@@ -10,10 +10,10 @@
 
 The best way to get me writing is to remove all barriers that slow me down. This
 especially includes the setup of creating a new post in =org-mode= and writing its
-index entry and its RSS entry. It might be really easy but it's annoying to have
-to do this every time for each new post. So I whipped up some elisp that does
-all of this for me. It just takes the title, keywords, and description of the
-post, and takes care of the rest.
+index entry. It might be really easy but it's annoying to have to do this every
+time for each new post. So I whipped up some elisp that does all of this for
+me. It just takes the title, keywords, and description of the post, and takes
+care of the rest.
 
 #+BEGIN_SRC elisp
 (defun bryan/blog-new-post (title keywords description)
