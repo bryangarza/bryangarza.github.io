@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/bryangarza
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://bryangarza.github.io
+  * I am bryangarza (https://keybase.io/bryangarza) on keybase.
+  * I have a public key ASCt5eIHhV21eg8RvqqUPeAYdcrIY6HZ65IXUO0guczM2Ao
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01019545ff34334ae38fd1a1d3ca19b035c40c72f4f0022e6d90f3b71a0317e0dcc40a",
+            "host": "keybase.io",
+            "kid": "0120ade5e207855db57a0f11beaa943de01875cac863a1d9eb921750ed20b9ccccd80a",
+            "uid": "fcb6ca039cf3f1f536d67589c86dc300",
+            "username": "bryangarza"
+        },
+        "service": {
+            "hostname": "bryangarza.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.13"
+    },
+    "ctime": 1457076705,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1457076582,
+        "hash": "72b15fbf038138fd5b836093f4cf603c15cdcb508839dc74c3c7453a73c42f41d71f5f66b63615e5089da385a48ff4db603363cb1d9c03c5460eeb4b7be1cea4",
+        "seqno": 400553
+    },
+    "prev": "28e109e279959daa672d265c9901234e90a093b9ce2afc433f47cd605170f9cc",
+    "seqno": 16,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+g6Rib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgreXiB4VdtXoPEb6qlD3gGHXKyGOh2euSF1DtILnMzNgKp3BheWxvYWTFAv97ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxOTU0NWZmMzQzMzRhZTM4ZmQxYTFkM2NhMTliMDM1YzQwYzcyZjRmMDAyMmU2ZDkwZjNiNzFhMDMxN2UwZGNjNDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYWRlNWUyMDc4NTVkYjU3YTBmMTFiZWFhOTQzZGUwMTg3NWNhYzg2M2ExZDllYjkyMTc1MGVkMjBiOWNjY2NkODBhIiwidWlkIjoiZmNiNmNhMDM5Y2YzZjFmNTM2ZDY3NTg5Yzg2ZGMzMDAiLCJ1c2VybmFtZSI6ImJyeWFuZ2FyemEifSwic2VydmljZSI6eyJob3N0bmFtZSI6ImJyeWFuZ2FyemEuZ2l0aHViLmlvIiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMTMifSwiY3RpbWUiOjE0NTcwNzY3MDUsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ1NzA3NjU4MiwiaGFzaCI6IjcyYjE1ZmJmMDM4MTM4ZmQ1YjgzNjA5M2Y0Y2Y2MDNjMTVjZGNiNTA4ODM5ZGM3NGMzYzc0NTNhNzNjNDJmNDFkNzFmNWY2NmI2MzYxNWU1MDg5ZGEzODVhNDhmZjRkYjYwMzM2M2NiMWQ5YzAzYzU0NjBlZWI0YjdiZTFjZWE0Iiwic2Vxbm8iOjQwMDU1M30sInByZXYiOiIyOGUxMDllMjc5OTU5ZGFhNjcyZDI2NWM5OTAxMjM0ZTkwYTA5M2I5Y2UyYWZjNDMzZjQ3Y2Q2MDUxNzBmOWNjIiwic2Vxbm8iOjE2LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQPxV+MBMn1gQSJyODtY6+hy5FJsti4I/CmPZID96EjlUXM0nEMNcfyN/Sz+XZFwWAYZdSip64UrWj+Z0Z20AAA2oc2lnX3R5cGUgo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bryangarza
+
+==================================================================
