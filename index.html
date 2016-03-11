@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-10 Thu 18:33 -->
+<!-- 2016-03-10 Thu 19:36 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -156,6 +156,58 @@ Lisp. (<a href="https://github.com/bryangarza">GitHub</a>, <a href="https://keyb
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">All Posts <span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
+<div class="outline-3"><h3><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h3>
+<p>
+One way to do dynamic scope is with <a href="https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Dynamic-Binding.html">fluid-let</a>, which basically reassigns the
+value of a variable instead of creating a shadow, but though this is available
+in Scheme, it&rsquo;s not available in Racket.
+</p>
+
+<p>
+Racket has a form named <a href="https://docs.racket-lang.org/guide/parameterize.html">parameterize</a>, that allows you to pass variables
+dynamically, but forces you to set a default value.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> <span style="color: #7388d6;">(</span>make-parameter 2<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">incr-x</span><span style="color: #7388d6;">)</span> <span style="color: #7388d6;">(</span>+ <span style="color: #909183;">(</span>x<span style="color: #909183;">)</span> 1<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">dynamic-x</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">parameterize</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
+    <span style="color: #909183;">(</span>incr-x<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+<code>make-parameter</code> creates a function <code>x</code> that returns the value. Evaluating <code>(x)</code>
+results in <code>2</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span>incr-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 3</span>
+</pre>
+</div>
+
+<p>
+However, you can associate a new value to the <code>x</code> parameter using <code>parameterize</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span>dynamic-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 6</span>
+</pre>
+</div>
+
+<p>
+An advantage of <code>parameterize</code> over imperative updates of parameter values is
+that the implementation is thread-safe, and continuation-friendly. There are a
+few other pluses in addition to that, which you can check out in the docs.
+</p>
+</div>
+
 <div class="outline-3"><h3><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h3>
 <p>
 I&rsquo;ve been writing a desktop application that uses OCaml for the backend, and

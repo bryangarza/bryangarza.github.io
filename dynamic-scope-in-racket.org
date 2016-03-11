@@ -1,0 +1,43 @@
+#+TITLE: Dynamic Scope In Racket
+#+DATE: [2016-03-10 Thu]
+#+KEYWORDS: racket, scope, dynamic, static
+#+DESCRIPTION: How to use dynamic scope in Racket
+#+OPTIONS: title:nil
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h1></header>
+#+END_HTML
+
+One way to do dynamic scope is with [[https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Dynamic-Binding.html][fluid-let]], which basically reassigns the
+value of a variable instead of creating a shadow, but though this is available
+in Scheme, it's not available in Racket.
+
+Racket has a form named [[https://docs.racket-lang.org/guide/parameterize.html][parameterize]], that allows you to pass variables
+dynamically, but forces you to set a default value.
+
+#+BEGIN_SRC scheme
+(define x (make-parameter 2))
+
+(define (incr-x) (+ (x) 1))
+
+(define (dynamic-x)
+  (parameterize ([x 5])
+    (incr-x)))
+#+END_SRC
+
+~make-parameter~ creates a function ~x~ that returns the value. Evaluating ~(x)~
+results in =2=.
+
+#+BEGIN_SRC scheme
+(incr-x) ;=> 3
+#+END_SRC
+
+However, you can associate a new value to the ~x~ parameter using ~parameterize~:
+
+#+BEGIN_SRC scheme
+(dynamic-x) ;=> 6
+#+END_SRC
+
+An advantage of ~parameterize~ over imperative updates of parameter values is
+that the implementation is thread-safe, and continuation-friendly. There are a
+few other pluses in addition to that, which you can check out in the docs.

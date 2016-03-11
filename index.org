@@ -10,6 +10,14 @@ Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarz
 
 * All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 #+BEGIN_HTML
+<div class="outline-3"><h3><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h3>
+#+END_HTML
+#+INCLUDE: "dynamic-scope-in-racket.org" :lines "11-"
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+#+BEGIN_HTML
 <div class="outline-3"><h3><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h3>
 #+END_HTML
 #+INCLUDE: "s-expressions-as-a-lightweight-serialization-format.org" :lines "11-"
