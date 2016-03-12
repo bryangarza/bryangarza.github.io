@@ -5,8 +5,8 @@
 #+OPTIONS: title:nil H:5
 
 I'm a computer science student, interested in {programming, foreign} languages
-and formal logic. You'll often find me writing Haskell, Racket, OCaml, and Emacs
-Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarza][Keybase]], [[mailto:brygarza@gmail.com][Contact]], [[http://themattchan.com/plquotes.html][PL quotes]])
+and formal logic. You'll often find me hacking on Haskell, Racket, OCaml, and
+Emacs Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarza][Keybase]], [[mailto:brygarza@gmail.com][Contact]], [[http://themattchan.com/plquotes.html][PL quotes]])
 
 * All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 #+BEGIN_HTML
