@@ -49,7 +49,7 @@ means anything any symbols referencing symbols that come after have to be
 wrapped in a ~lambda~; if you try to look up too early, it won't work.
 
 #+BEGIN_SRC scheme
-; Trying to reference a value immediately:
+; Trying to reference a value immediately
 (letrec ([six (+ x 1)]
          [x 5])
   #t)
