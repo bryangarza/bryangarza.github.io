@@ -1,6 +1,7 @@
 #+TITLE: Archive
 
-   + [[file:exploring-racket-forms:-define-and-letrec.org][Exploring Racket Forms: define and letrec]]
+
+   + [[file:exploring-racket-forms-define-and-letrec.org][Exploring Racket Forms: define and letrec]]
    + [[file:dynamic-scope-in-racket.org][Dynamic Scope In Racket]]
    + [[file:s-expressions-as-a-lightweight-serialization-format.org][S-expressions as a Lightweight Serialization Format]]
    + [[file:adding-syntax-extensions-to-an-ocaml-project.org][Adding Syntax Extensions To An OCaml Project]]

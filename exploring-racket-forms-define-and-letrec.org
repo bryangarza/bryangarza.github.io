@@ -5,7 +5,7 @@
 #+OPTIONS: title:nil
 
 #+BEGIN_HTML
-<header><h1 class="title"><a href="./exploring-racket-forms:-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
+<header><h1 class="title"><a href="./exploring-racket-forms-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
 #+END_HTML
 
 A couple weeks ago I was trying to understand why expressions like this were

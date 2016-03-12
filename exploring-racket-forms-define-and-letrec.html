@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-11 Fri 21:33 -->
+<!-- 2016-03-12 Sat 00:12 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Exploring Racket Forms: define and letrec</title>
@@ -150,7 +150,7 @@ for the JavaScript code in this tag.
 <h1 class="title"><a href="http://bryangarza.github.io">val bryan : sushi -> emacs -> code </a></h1>
 </div>
 <div id="content">
-<header><h1 class="title"><a href="./exploring-racket-forms:-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
+<header><h1 class="title"><a href="./exploring-racket-forms-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
 
 <p>
 A couple weeks ago I was trying to understand why expressions like this were
@@ -202,7 +202,7 @@ something akin to <code>undefined</code>. After that, all bindings are initializ
 values at once. This allows bindings to reference others before those bindings&rsquo;
 definitions exist. The value of <code>x</code> in <code>f</code> is only looked up once <code>f</code> is
 evaluated. We&rsquo;re referencing symbols statically, but the lookup is dynamic. That
-means anything any symbols referencing symbols that come after, have to be
+means anything any symbols referencing symbols that come after have to be
 wrapped in a <code>lambda</code>; if you try to look up too early, it won&rsquo;t work.
 </p>
 
