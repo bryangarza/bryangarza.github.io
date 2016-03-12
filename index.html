@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-10 Thu 19:36 -->
+<!-- 2016-03-11 Fri 21:34 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -156,6 +156,111 @@ Lisp. (<a href="https://github.com/bryangarza">GitHub</a>, <a href="https://keyb
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">All Posts <span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
 <div class="outline-text-2" id="text-orgheadline1">
+<div class="outline-3"><h3><a href="./exploring-racket-forms:-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h3>
+<p>
+A couple weeks ago I was trying to understand why expressions like this were
+valid:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">future-bound</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #909183;">(</span><span style="color: #0000ff;">f</span><span style="color: #909183;">)</span> <span style="color: #909183;">(</span>+ x 1<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> 5<span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Why can you define the <code>x</code> after its usage in <code>f</code>? I initially thought that <code>define</code>
+desugared into nested <code>let</code>&rsquo;s or perhaps <code>let*</code>, like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
+    f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+       <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  f<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+But neither made sense, since we still have the same problem of <code>x</code> being bound
+after <code>f</code> is bound. It turns out that <code>define</code> desugars into <code>letrec</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+This works because <code>letrec</code> initializes the bindings for each of the symbols, to
+something akin to <code>undefined</code>. After that, all bindings are initialized to their
+values at once. This allows bindings to reference others before those bindings&rsquo;
+definitions exist. The value of <code>x</code> in <code>f</code> is only looked up once <code>f</code> is
+evaluated. We&rsquo;re referencing symbols statically, but the lookup is dynamic. That
+means anything any symbols referencing symbols that come after have to be
+wrapped in a <code>lambda</code>; if you try to look up too early, it won&rsquo;t work.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">Trying to reference a value immediately:</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>six <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  #t<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Result:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-example">Error: struct:exn:fail:contract:variable
+
+x: undefined;
+ cannot use before initialization
+</pre>
+</div>
+
+<p>
+You can see this fails at the point that we try to look up <code>x</code> during the binding
+of <code>six</code>. Now using a <code>lambda</code> (and with <code>let</code> since it behaves in the same way and
+this example only binds one symbol anyways):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">loophole?</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  f<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Here, <code>x</code> isn&rsquo;t bound anywhere, but <code>f</code> can still be bound and returned! But if we
+actually try to evaluate <code>f</code>, we&rsquo;ll run into problems.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">=&gt; Error: struct:exn:fail:contract</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+
 <div class="outline-3"><h3><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h3>
 <p>
 One way to do dynamic scope is with <a href="https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Dynamic-Binding.html">fluid-let</a>, which basically reassigns the

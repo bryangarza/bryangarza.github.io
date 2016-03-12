@@ -1,0 +1,84 @@
+#+TITLE: Exploring Racket Forms: define and letrec
+#+DATE: [2016-03-11 Fri]
+#+KEYWORDS: racket, scheme, desugar, define, let, letrec
+#+DESCRIPTION: How define desugars in Racket
+#+OPTIONS: title:nil
+
+#+BEGIN_HTML
+<header><h1 class="title"><a href="./exploring-racket-forms:-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
+#+END_HTML
+
+A couple weeks ago I was trying to understand why expressions like this were
+valid:
+
+#+BEGIN_SRC scheme
+(define (future-bound)
+  (define (f) (+ x 1))
+  (define x 5)
+  (f))
+#+END_SRC
+
+Why can you define the ~x~ after its usage in ~f~? I initially thought that ~define~
+desugared into nested ~let~'s or perhaps ~let*~, like this:
+
+#+BEGIN_SRC scheme
+(let ([f (+ x 1)])
+  (let ([x 5])
+    f))
+
+(let* ([f (+ x 1)]
+       [x 5])
+  f)
+#+END_SRC
+
+But neither made sense, since we still have the same problem of ~x~ being bound
+after ~f~ is bound. It turns out that ~define~ desugars into ~letrec~:
+
+#+BEGIN_SRC scheme
+(letrec ([f (λ () (+ x 1))]
+         [x 5])
+  (f))
+#+END_SRC
+
+This works because ~letrec~ initializes the bindings for each of the symbols, to
+something akin to ~undefined~. After that, all bindings are initialized to their
+values at once. This allows bindings to reference others before those bindings'
+definitions exist. The value of ~x~ in ~f~ is only looked up once ~f~ is
+evaluated. We're referencing symbols statically, but the lookup is dynamic. That
+means anything any symbols referencing symbols that come after have to be
+wrapped in a ~lambda~; if you try to look up too early, it won't work.
+
+#+BEGIN_SRC scheme
+; Trying to reference a value immediately:
+(letrec ([six (+ x 1)]
+         [x 5])
+  #t)
+#+END_SRC
+
+Result:
+
+#+BEGIN_SRC example
+Error: struct:exn:fail:contract:variable
+
+x: undefined;
+ cannot use before initialization
+#+END_SRC
+
+You can see this fails at the point that we try to look up ~x~ during the binding
+of ~six~. Now using a ~lambda~ (and with ~let~ since it behaves in the same way and
+this example only binds one symbol anyways):
+
+#+BEGIN_SRC scheme
+; loophole?
+(let ([f (λ () (+ x 1))])
+  f)
+#+END_SRC
+
+Here, ~x~ isn't bound anywhere, but ~f~ can still be bound and returned! But if we
+actually try to evaluate ~f~, we'll run into problems.
+
+#+BEGIN_SRC scheme
+; => Error: struct:exn:fail:contract
+(let ([f (λ () (+ x 1))])
+  (f))
+#+END_SRC

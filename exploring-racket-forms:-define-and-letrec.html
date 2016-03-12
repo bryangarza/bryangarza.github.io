@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-03-11 Fri 21:33 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>Exploring Racket Forms: define and letrec</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Bryan Garza">
+<meta  name="description" content="How define desugars in Racket"
+>
+<meta  name="keywords" content="racket, scheme, desugar, define, let, letrec">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title"><a href="http://bryangarza.github.io">val bryan : sushi -> emacs -> code </a></h1>
+</div>
+<div id="content">
+<header><h1 class="title"><a href="./exploring-racket-forms:-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
+
+<p>
+A couple weeks ago I was trying to understand why expressions like this were
+valid:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">future-bound</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #909183;">(</span><span style="color: #0000ff;">f</span><span style="color: #909183;">)</span> <span style="color: #909183;">(</span>+ x 1<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> 5<span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Why can you define the <code>x</code> after its usage in <code>f</code>? I initially thought that <code>define</code>
+desugared into nested <code>let</code>&rsquo;s or perhaps <code>let*</code>, like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
+    f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+       <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  f<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+But neither made sense, since we still have the same problem of <code>x</code> being bound
+after <code>f</code> is bound. It turns out that <code>define</code> desugars into <code>letrec</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+This works because <code>letrec</code> initializes the bindings for each of the symbols, to
+something akin to <code>undefined</code>. After that, all bindings are initialized to their
+values at once. This allows bindings to reference others before those bindings&rsquo;
+definitions exist. The value of <code>x</code> in <code>f</code> is only looked up once <code>f</code> is
+evaluated. We&rsquo;re referencing symbols statically, but the lookup is dynamic. That
+means anything any symbols referencing symbols that come after, have to be
+wrapped in a <code>lambda</code>; if you try to look up too early, it won&rsquo;t work.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">Trying to reference a value immediately:</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>six <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
+         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  #t<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Result:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-example">Error: struct:exn:fail:contract:variable
+
+x: undefined;
+ cannot use before initialization
+</pre>
+</div>
+
+<p>
+You can see this fails at the point that we try to look up <code>x</code> during the binding
+of <code>six</code>. Now using a <code>lambda</code> (and with <code>let</code> since it behaves in the same way and
+this example only binds one symbol anyways):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">loophole?</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  f<span style="color: #707183;">)</span>
+</pre>
+</div>
+
+<p>
+Here, <code>x</code> isn&rsquo;t bound anywhere, but <code>f</code> can still be bound and returned! But if we
+actually try to evaluate <code>f</code>, we&rsquo;ll run into problems.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">=&gt; Error: struct:exn:fail:contract</span>
+<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
+  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+</pre>
+</div>
+</div>
+<div id="postamble" class="status">
+<a href="archive.html">Archive</a>
+</div>
+</body>
+</html>
