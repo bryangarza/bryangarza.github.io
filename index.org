@@ -6,7 +6,7 @@
 
 I'm a computer scientist exploring functional programming, type theory, and
 logic. My favorite languages are OCaml, Haskell, Racket, and Emacs
-Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarza][Keybase]], [[mailto:brygarza@gmail.com][Contact]])
+Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarza][Keybase]], [[mailto:brygarza@gmail.com][Contact]], [[http://themattchan.com/plquotes.html][PL quotes]])
 
 * All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
 #+BEGIN_HTML
