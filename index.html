@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-12 Sat 00:46 -->
+<!-- 2016-06-23 Thu 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Home</title>
@@ -94,6 +94,7 @@
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 <script type="text/javascript">
 /*
@@ -164,10 +165,10 @@ valid:
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">future-bound</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #909183;">(</span><span style="color: #0000ff;">f</span><span style="color: #909183;">)</span> <span style="color: #909183;">(</span>+ x 1<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> 5<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">future-bound</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-function-name">f</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>+ x 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-function-name">x</span> 5<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -178,13 +179,13 @@ desugared into nested <code>let</code>&rsquo;s or perhaps <code>let*</code>, lik
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>x 5<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-       <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  f<span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+       <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  f<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -195,9 +196,9 @@ after <code>f</code> is bound. It turns out that <code>define</code> desugars in
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">letrec</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+         <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -213,10 +214,10 @@ wrapped in a <code>lambda</code>; if you try to look up too early, it won&rsquo;
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">Trying to reference a value immediately</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>six <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  #t<span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">Trying to reference a value immediately</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">letrec</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>six <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+         <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  #t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -241,9 +242,9 @@ this example only binds one symbol anyways):
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">loophole?</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  f<span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">loophole?</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  f<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -254,9 +255,9 @@ actually try to evaluate <code>f</code>, we&rsquo;ll run into problems.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">=&gt; Error: struct:exn:fail:contract</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">=&gt; Error: struct:exn:fail:contract</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -275,13 +276,13 @@ dynamically, but forces you to set a default value.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> <span style="color: #7388d6;">(</span>make-parameter 2<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">x</span> <span class="org-rainbow-delimiters-depth-2">(</span>make-parameter 2<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">incr-x</span><span style="color: #7388d6;">)</span> <span style="color: #7388d6;">(</span>+ <span style="color: #909183;">(</span>x<span style="color: #909183;">)</span> 1<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">incr-x</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>x<span class="org-rainbow-delimiters-depth-3">)</span> 1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">dynamic-x</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">parameterize</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>incr-x<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">dynamic-x</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">parameterize</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>x 5<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>incr-x<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -292,7 +293,7 @@ results in <code>2</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span>incr-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 3</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span>incr-x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">=&gt; 3</span>
 </pre>
 </div>
 
@@ -302,7 +303,7 @@ However, you can associate a new value to the <code>x</code> parameter using <co
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span>dynamic-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 6</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span>dynamic-x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">=&gt; 6</span>
 </pre>
 </div>
 
@@ -328,13 +329,13 @@ With a type like:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">book</span> <span style="color: #a52a2a;">=</span> <span style="color: #707183;">{</span>
-  title        <span style="color: #a52a2a;">:</span> string<span style="color: #a52a2a;">;</span>
-  authors      <span style="color: #a52a2a;">:</span> string list<span style="color: #a52a2a;">;</span>
-  pubdate      <span style="color: #a52a2a;">:</span> string<span style="color: #a52a2a;">;</span>
-  publishers   <span style="color: #a52a2a;">:</span> string list<span style="color: #a52a2a;">;</span>
-  subjects     <span style="color: #a52a2a;">:</span> string list
-<span style="color: #707183;">}</span> <span style="color: #a020f0;">with</span> sexp
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">book</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+  title        <span class="org-tuareg-font-lock-operator">:</span> string<span class="org-tuareg-font-lock-operator">;</span>
+  authors      <span class="org-tuareg-font-lock-operator">:</span> string list<span class="org-tuareg-font-lock-operator">;</span>
+  pubdate      <span class="org-tuareg-font-lock-operator">:</span> string<span class="org-tuareg-font-lock-operator">;</span>
+  publishers   <span class="org-tuareg-font-lock-operator">:</span> string list<span class="org-tuareg-font-lock-operator">;</span>
+  subjects     <span class="org-tuareg-font-lock-operator">:</span> string list
+<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">}</span></span> <span class="org-keyword">with</span> sexp
 </pre>
 </div>
 
@@ -347,11 +348,11 @@ Now racket can receive:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-scheme">'<span style="color: #707183;">(</span><span style="color: #7388d6;">(</span>title <span style="color: #8b2252;">"Purely functional data structures"</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>authors <span style="color: #909183;">(</span><span style="color: #8b2252;">"Chris Okasaki"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>pubdate 1999<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>publishers <span style="color: #909183;">(</span><span style="color: #8b2252;">"Cambridge University Press"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>subjects <span style="color: #909183;">(</span><span style="color: #8b2252;">"Functional programming languages"</span> <span style="color: #8b2252;">"Data structures (Computer science)"</span><span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>title <span class="org-string">"Purely functional data structures"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>authors <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"Chris Okasaki"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>pubdate 1999<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>publishers <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"Cambridge University Press"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>subjects <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"Functional programming languages"</span> <span class="org-string">"Data structures (Computer science)"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -360,16 +361,16 @@ I take this sexp, and create a <code>book</code> struct:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span>struct book <span style="color: #7388d6;">(</span>title authors pubdate publishers subjects<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span>struct book <span class="org-rainbow-delimiters-depth-2">(</span>title authors pubdate publishers subjects<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">isbn-lookup</span> isbn<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>cmd <span style="color: #907373;">(</span>string-join <span style="color: #6276ba;">(</span>list homelib-binary isbn<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span><span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span>~&gt;&gt; process    <span style="color: #b22222;">; </span><span style="color: #b22222;">-&gt; '(stdout stdin proc-id stderr f)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">isbn-lookup</span> isbn<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>cmd <span class="org-rainbow-delimiters-depth-5">(</span>string-join <span class="org-rainbow-delimiters-depth-6">(</span>list homelib-binary isbn<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span>~&gt;&gt; process    <span class="org-comment-delimiter">; </span><span class="org-comment">-&gt; '(stdout stdin proc-id stderr f)</span>
            car
-           read       <span style="color: #b22222;">; </span><span style="color: #b22222;">from an input port</span>
-           <span style="color: #907373;">(</span><span style="color: #a020f0;">map</span> cadr<span style="color: #907373;">)</span> <span style="color: #b22222;">; </span><span style="color: #b22222;">(k v) -&gt; v</span>
-           <span style="color: #907373;">(</span>apply book<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-     cmd<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+           read       <span class="org-comment-delimiter">; </span><span class="org-comment">from an input port</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span><span class="org-keyword">map</span> cadr<span class="org-rainbow-delimiters-depth-5">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">(k v) -&gt; v</span>
+           <span class="org-rainbow-delimiters-depth-5">(</span>apply book<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+     cmd<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -378,14 +379,14 @@ Finally, we can test it out on the REPL to make sure it works:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-scheme">racket@app.rkt&gt; <span style="color: #707183;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme">racket@app.rkt&gt; <span class="org-rainbow-delimiters-depth-1">(</span>isbn-lookup <span class="org-string">"0521663504"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 #&lt;book&gt;
 
-racket@app.rkt&gt; <span style="color: #707183;">(</span>book-title <span style="color: #7388d6;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #8b2252;">"Purely functional data structures"</span>
+racket@app.rkt&gt; <span class="org-rainbow-delimiters-depth-1">(</span>book-title <span class="org-rainbow-delimiters-depth-2">(</span>isbn-lookup <span class="org-string">"0521663504"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-string">"Purely functional data structures"</span>
 
-racket@app.rkt&gt; <span style="color: #707183;">(</span>book-subjects <span style="color: #7388d6;">(</span>isbn-lookup <span style="color: #8b2252;">"0521663504"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
-'<span style="color: #707183;">(</span><span style="color: #8b2252;">"Functional programming languages"</span> <span style="color: #8b2252;">"Data structures (Computer science)"</span><span style="color: #707183;">)</span>
+racket@app.rkt&gt; <span class="org-rainbow-delimiters-depth-1">(</span>book-subjects <span class="org-rainbow-delimiters-depth-2">(</span>isbn-lookup <span class="org-string">"0521663504"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+'<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-string">"Functional programming languages"</span> <span class="org-string">"Data structures (Computer science)"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -484,7 +485,7 @@ annotations are inline with your code. When you write a function like:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">foo</span> <span style="color: #a52a2a;">:</span> <span style="color: #228b22;">'a </span><span style="color: #a52a2a;">-&gt;</span><span style="color: #228b22;"> 'a </span><span style="color: #a52a2a;">=</span> <span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">x</span> <span style="color: #a52a2a;">-&gt;</span> 0
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">foo</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">'a </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> 'a </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 0
 </pre>
 </div>
 <p>
@@ -495,7 +496,7 @@ to annotate:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">foo</span> <span style="color: #a52a2a;">:</span> <span style="color: #228b22;">'a. 'a </span><span style="color: #a52a2a;">-&gt;</span><span style="color: #228b22;"> 'a </span><span style="color: #a52a2a;">=</span> <span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">x</span> <span style="color: #a52a2a;">-&gt;</span> 0
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">foo</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">'a. 'a </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> 'a </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 0
 </pre>
 </div>
 <p>
@@ -509,7 +510,7 @@ the compiler.
 </p>
 
 <p>
-There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
+There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street&rsquo;s blog</a>.
 </p>
 </div>
 
@@ -525,67 +526,67 @@ care of the rest.
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span style="color: #707183;">(</span><span style="color: #a020f0;">defun</span> <span style="color: #0000ff;">bryan/blog-new-post</span> <span style="color: #7388d6;">(</span>title keywords description<span style="color: #7388d6;">)</span>
-  <span style="color: #8b2252;">"Create a new post"</span>
-  <span style="color: #7388d6;">(</span>interactive <span style="color: #8b2252;">"sTitle: \nsKeywords: \nsDescription: "</span><span style="color: #7388d6;">)</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">(message "Keywords are: %s" keywords)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #909183;">(</span><span style="color: #709870;">(</span>filename-prepared <span style="color: #907373;">(</span>string-trim
-                             <span style="color: #6276ba;">(</span>replace-regexp-in-string <span style="color: #8b2252;">" "</span> <span style="color: #8b2252;">"-"</span> <span style="color: #858580;">(</span>downcase title<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>relfile <span style="color: #907373;">(</span>concat filename-prepared <span style="color: #8b2252;">".org"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>relfile-html <span style="color: #907373;">(</span>concat <span style="color: #8b2252;">"./"</span> filename-prepared <span style="color: #8b2252;">".html"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>absfile <span style="color: #907373;">(</span>concat bryan/blog-blogdir relfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>date <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"[%Y-%m-%d %a]"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>date-day-not-padded <span style="color: #907373;">(</span>string-trim <span style="color: #6276ba;">(</span>format-time-string <span style="color: #8b2252;">"%e"</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>mon <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"%B"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>yr <span style="color: #907373;">(</span>format-time-string <span style="color: #8b2252;">"%Y"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>date-human-readable
-          <span style="color: #907373;">(</span>concat <span style="color: #8b2252;">"("</span> mon <span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">" %s, "</span> date-day-not-padded<span style="color: #6276ba;">)</span> yr <span style="color: #8b2252;">")"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-         <span style="color: #709870;">(</span>my-html-link-and-span
-          `<span style="color: #907373;">(</span>,<span style="color: #6276ba;">(</span>html-a
-              <span style="color: #483d8b;">:href</span> relfile-html title<span style="color: #6276ba;">)</span>
-            ,<span style="color: #6276ba;">(</span>html-span <span style="color: #8b2252;">" "</span><span style="color: #6276ba;">)</span>
-            ,<span style="color: #6276ba;">(</span>html-span
-              <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"timestamp-wrapper"</span>
-              <span style="color: #858580;">(</span>html-span
-               <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"timestamp"</span>
-               date-human-readable<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">bryan/blog-new-post</span> <span class="org-rainbow-delimiters-depth-2">(</span>title keywords description<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-doc">"Create a new post"</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>interactive <span class="org-string">"sTitle: \nsKeywords: \nsDescription: "</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">(message "Keywords are: %s" keywords)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>filename-prepared <span class="org-rainbow-delimiters-depth-5">(</span>string-trim
+                             <span class="org-rainbow-delimiters-depth-6">(</span>replace-regexp-in-string <span class="org-string">" "</span> <span class="org-string">"-"</span> <span class="org-rainbow-delimiters-depth-7">(</span>downcase title<span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>relfile <span class="org-rainbow-delimiters-depth-5">(</span>concat filename-prepared <span class="org-string">".org"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>relfile-html <span class="org-rainbow-delimiters-depth-5">(</span>concat <span class="org-string">"./"</span> filename-prepared <span class="org-string">".html"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>absfile <span class="org-rainbow-delimiters-depth-5">(</span>concat bryan/blog-blogdir relfile<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>date <span class="org-rainbow-delimiters-depth-5">(</span>format-time-string <span class="org-string">"[%Y-%m-%d %a]"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>date-day-not-padded <span class="org-rainbow-delimiters-depth-5">(</span>string-trim <span class="org-rainbow-delimiters-depth-6">(</span>format-time-string <span class="org-string">"%e"</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>mon <span class="org-rainbow-delimiters-depth-5">(</span>format-time-string <span class="org-string">"%B"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>yr <span class="org-rainbow-delimiters-depth-5">(</span>format-time-string <span class="org-string">"%Y"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>date-human-readable
+          <span class="org-rainbow-delimiters-depth-5">(</span>concat <span class="org-string">"("</span> mon <span class="org-rainbow-delimiters-depth-6">(</span>format <span class="org-string">" %s, "</span> date-day-not-padded<span class="org-rainbow-delimiters-depth-6">)</span> yr <span class="org-string">")"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+         <span class="org-rainbow-delimiters-depth-4">(</span>my-html-link-and-span
+          `<span class="org-rainbow-delimiters-depth-5">(</span>,<span class="org-rainbow-delimiters-depth-6">(</span>html-a
+              <span class="org-builtin">:href</span> relfile-html title<span class="org-rainbow-delimiters-depth-6">)</span>
+            ,<span class="org-rainbow-delimiters-depth-6">(</span>html-span <span class="org-string">" "</span><span class="org-rainbow-delimiters-depth-6">)</span>
+            ,<span class="org-rainbow-delimiters-depth-6">(</span>html-span
+              <span class="org-builtin">:class</span> <span class="org-string">"timestamp-wrapper"</span>
+              <span class="org-rainbow-delimiters-depth-7">(</span>html-span
+               <span class="org-builtin">:class</span> <span class="org-string">"timestamp"</span>
+               date-human-readable<span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
 
-    <span style="color: #909183;">(</span><span style="color: #a020f0;">with-current-buffer</span> <span style="color: #709870;">(</span>find-file-noselect bryan/blog-indexfile<span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>goto-char <span style="color: #907373;">(</span>point-min<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>search-forward <span style="color: #8b2252;">"&gt;@@"</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+BEGIN_HTML\n"</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>html-lite-write-tree-single-line
-       <span style="color: #907373;">(</span>butlast
-        <span style="color: #6276ba;">(</span>html-div
-         <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"outline-3"</span>
-         <span style="color: #858580;">(</span>html-h3
-          my-html-link-and-span<span style="color: #858580;">)</span><span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+END_HTML\n"</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"#+INCLUDE: \"%s\" :lines \"11-\""</span> relfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #907373;">(</span>bryan/org-escape-html <span style="color: #8b2252;">"&lt;/div&gt;"</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span><span style="color: #a020f0;">with-temp-message</span> <span style="color: #907373;">(</span>format <span style="color: #8b2252;">"Writing to %s"</span> bryan/blog-indexfile<span style="color: #907373;">)</span>
-        <span style="color: #907373;">(</span>save-buffer<span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>message <span style="color: #8b2252;">"Writing file...done"</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">with-current-buffer</span> <span class="org-rainbow-delimiters-depth-4">(</span>find-file-noselect bryan/blog-indexfile<span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>goto-char <span class="org-rainbow-delimiters-depth-5">(</span>point-min<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>search-forward <span class="org-string">"&gt;@@"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>insert <span class="org-string">"\n#+BEGIN_HTML\n"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>html-lite-write-tree-single-line
+       <span class="org-rainbow-delimiters-depth-5">(</span>butlast
+        <span class="org-rainbow-delimiters-depth-6">(</span>html-div
+         <span class="org-builtin">:class</span> <span class="org-string">"outline-3"</span>
+         <span class="org-rainbow-delimiters-depth-7">(</span>html-h3
+          my-html-link-and-span<span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>insert <span class="org-string">"\n#+END_HTML\n"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>insert <span class="org-rainbow-delimiters-depth-5">(</span>format <span class="org-string">"#+INCLUDE: \"%s\" :lines \"11-\""</span> relfile<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>insert <span class="org-rainbow-delimiters-depth-5">(</span>bryan/org-escape-html <span class="org-string">"&lt;/div&gt;"</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">with-temp-message</span> <span class="org-rainbow-delimiters-depth-5">(</span>format <span class="org-string">"Writing to %s"</span> bryan/blog-indexfile<span class="org-rainbow-delimiters-depth-5">)</span>
+        <span class="org-rainbow-delimiters-depth-5">(</span>save-buffer<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>message <span class="org-string">"Writing file...done"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
 
-    <span style="color: #909183;">(</span><span style="color: #a020f0;">with-temp-buffer</span>
-      <span style="color: #709870;">(</span>-each `<span style="color: #907373;">(</span>,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+TITLE: %s\n"</span> title<span style="color: #6276ba;">)</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+DATE: %s\n"</span> date<span style="color: #6276ba;">)</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+KEYWORDS: %s\n"</span> keywords<span style="color: #6276ba;">)</span>
-               ,<span style="color: #6276ba;">(</span>format <span style="color: #8b2252;">"#+DESCRIPTION: %s\n"</span> description<span style="color: #6276ba;">)</span>
-               <span style="color: #8b2252;">"#+OPTIONS: title:nil\n\n"</span>
-               <span style="color: #8b2252;">"#+BEGIN_HTML\n"</span><span style="color: #907373;">)</span>
-        #'insert<span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>html-lite-write-tree-single-line
-       <span style="color: #907373;">(</span>html-header
-        <span style="color: #6276ba;">(</span>html-h1 <span style="color: #483d8b;">:class</span> <span style="color: #8b2252;">"title"</span> my-html-link-and-span<span style="color: #6276ba;">)</span><span style="color: #907373;">)</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span>insert <span style="color: #8b2252;">"\n#+END_HTML\n\n"</span><span style="color: #709870;">)</span>
-      <span style="color: #709870;">(</span><span style="color: #a020f0;">when</span> <span style="color: #907373;">(</span>file-writable-p absfile<span style="color: #907373;">)</span>
-        <span style="color: #907373;">(</span>write-region <span style="color: #6276ba;">(</span>point-min<span style="color: #6276ba;">)</span>
-                      <span style="color: #6276ba;">(</span>point-max<span style="color: #6276ba;">)</span>
-                      absfile<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>find-file absfile<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>goto-char <span style="color: #909183;">(</span>point-max<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>message <span style="color: #8b2252;">"Generated template"</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">with-temp-buffer</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>-each `<span class="org-rainbow-delimiters-depth-5">(</span>,<span class="org-rainbow-delimiters-depth-6">(</span>format <span class="org-string">"#+TITLE: %s\n"</span> title<span class="org-rainbow-delimiters-depth-6">)</span>
+               ,<span class="org-rainbow-delimiters-depth-6">(</span>format <span class="org-string">"#+DATE: %s\n"</span> date<span class="org-rainbow-delimiters-depth-6">)</span>
+               ,<span class="org-rainbow-delimiters-depth-6">(</span>format <span class="org-string">"#+KEYWORDS: %s\n"</span> keywords<span class="org-rainbow-delimiters-depth-6">)</span>
+               ,<span class="org-rainbow-delimiters-depth-6">(</span>format <span class="org-string">"#+DESCRIPTION: %s\n"</span> description<span class="org-rainbow-delimiters-depth-6">)</span>
+               <span class="org-string">"#+OPTIONS: title:nil\n\n"</span>
+               <span class="org-string">"#+BEGIN_HTML\n"</span><span class="org-rainbow-delimiters-depth-5">)</span>
+        #'insert<span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>html-lite-write-tree-single-line
+       <span class="org-rainbow-delimiters-depth-5">(</span>html-header
+        <span class="org-rainbow-delimiters-depth-6">(</span>html-h1 <span class="org-builtin">:class</span> <span class="org-string">"title"</span> my-html-link-and-span<span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span>insert <span class="org-string">"\n#+END_HTML\n\n"</span><span class="org-rainbow-delimiters-depth-4">)</span>
+      <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-5">(</span>file-writable-p absfile<span class="org-rainbow-delimiters-depth-5">)</span>
+        <span class="org-rainbow-delimiters-depth-5">(</span>write-region <span class="org-rainbow-delimiters-depth-6">(</span>point-min<span class="org-rainbow-delimiters-depth-6">)</span>
+                      <span class="org-rainbow-delimiters-depth-6">(</span>point-max<span class="org-rainbow-delimiters-depth-6">)</span>
+                      absfile<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>find-file absfile<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>goto-char <span class="org-rainbow-delimiters-depth-3">(</span>point-max<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>message <span class="org-string">"Generated template"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -606,57 +607,57 @@ traverse any further and hasn&rsquo;t reached the destination node.
 
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">module</span> <span style="color: #228b22;">Graph</span> <span style="color: #a52a2a;">=</span>
-<span style="color: #000000; font-weight: bold;">struct</span>
-  <span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">node</span>   <span style="color: #a52a2a;">=</span> int
-  <span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">graph</span>  <span style="color: #a52a2a;">=</span> <span style="color: #707183;">{</span> nodes <span style="color: #a52a2a;">:</span> node list<span style="color: #a52a2a;">;</span> edges <span style="color: #a52a2a;">:</span> <span style="color: #7388d6;">(</span>node<span style="color: #a52a2a;">*</span>node<span style="color: #7388d6;">)</span> list <span style="color: #707183;">}</span>
-  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">mk</span> <span style="color: #a52a2a;">=</span> <span style="color: #707183;">{</span> nodes<span style="color: #a52a2a;">=</span><span style="color: #7388d6;">[]</span> <span style="color: #a52a2a;">;</span> edges<span style="color: #a52a2a;">=</span> <span style="color: #7388d6;">[]</span> <span style="color: #707183;">}</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Graph</span> <span class="org-tuareg-font-lock-operator">=</span>
+<span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">node</span>   <span class="org-tuareg-font-lock-operator">=</span> int
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">graph</span>  <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">{</span></span> nodes <span class="org-tuareg-font-lock-operator">:</span> node list<span class="org-tuareg-font-lock-operator">;</span> edges <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span>node<span class="org-tuareg-font-lock-operator">*</span>node<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span> list <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">}</span></span>
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">mk</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">{</span></span> nodes<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-tuareg-font-lock-operator">;</span> edges<span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">[]</span></span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 
-  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">mk_outgoing</span><span style="color: #a0522d;"> g</span> <span style="color: #a52a2a;">=</span>
-    <span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">n</span> <span style="color: #a52a2a;">-&gt;</span>
-      <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">keep</span><span style="color: #a0522d;"> </span><span style="color: #707183;">(</span><span style="color: #7388d6;">(</span><span style="color: #a0522d;">left</span><span style="color: #a52a2a;">,</span><span style="color: #a0522d;">_</span><span style="color: #7388d6;">)</span><span style="color: #a0522d;"> </span><span style="color: #a020f0;">as</span><span style="color: #a0522d;"> edge</span><span style="color: #707183;">)</span><span style="color: #a0522d;"> acc</span> <span style="color: #a52a2a;">=</span> <span style="color: #a020f0;">if</span> left <span style="color: #a52a2a;">=</span> n <span style="color: #a020f0;">then</span> <span style="color: #707183;">[</span>edge<span style="color: #707183;">]</span> <span style="color: #a52a2a;">@</span> acc <span style="color: #a020f0;">else</span> acc <span style="color: #000000; font-weight: bold;">in</span>
-      <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">next_to</span> <span style="color: #a52a2a;">=</span> <span style="color: #228b22;">List.</span>fold_right g.edges <span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span>keep <span style="color: #008b8b;">~init</span><span style="color: #a52a2a;">:</span><span style="color: #707183;">[]</span> <span style="color: #000000; font-weight: bold;">in</span>
-      <span style="color: #228b22;">Int.Set.</span>of_list <span style="color: #707183;">(</span><span style="color: #228b22;">List.</span>map next_to <span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span><span style="color: #228b22;">snd</span><span style="color: #707183;">)</span>
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">mk_outgoing</span><span class="org-variable-name"> g</span> <span class="org-tuareg-font-lock-operator">=</span>
+    <span class="org-keyword">fun</span> <span class="org-variable-name">n</span> <span class="org-tuareg-font-lock-operator">-&gt;</span>
+      <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">keep</span><span class="org-variable-name"> </span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-variable-name">left</span><span class="org-tuareg-font-lock-operator">,</span><span class="org-variable-name">_</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-variable-name"> </span><span class="org-keyword">as</span><span class="org-variable-name"> edge</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span><span class="org-variable-name"> acc</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">if</span> left <span class="org-tuareg-font-lock-operator">=</span> n <span class="org-keyword">then</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">[</span></span>edge<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">]</span></span> <span class="org-tuareg-font-lock-operator">@</span> acc <span class="org-keyword">else</span> acc <span class="org-tuareg-font-lock-governing">in</span>
+      <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">next_to</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-module">List.</span>fold_right g.edges <span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span>keep <span class="org-constant">~init</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">[]</span></span> <span class="org-tuareg-font-lock-governing">in</span>
+      <span class="org-tuareg-font-lock-module">Int.Set.</span>of_list <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-tuareg-font-lock-module">List.</span>map next_to <span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-type">snd</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
 
-  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">bfs_traverse_until</span><span style="color: #a0522d;"> g root </span><span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span><span style="color: #a0522d;">action</span> <span style="color: #a52a2a;">=</span>
-    <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">outgoing</span> <span style="color: #a52a2a;">=</span> mk_outgoing g
-    <span style="color: #000000; font-weight: bold;">and</span> <span style="color: #a0522d;">visited</span>  <span style="color: #a52a2a;">=</span> <span style="color: #228b22;">Int.Set.</span>empty
-    <span style="color: #000000; font-weight: bold;">and</span> <span style="color: #a0522d;">to_visit</span> <span style="color: #a52a2a;">=</span> <span style="color: #228b22;">Queue.</span>create <span style="color: #707183;">()</span> <span style="color: #000000; font-weight: bold;">in</span>
-    <span style="color: #228b22;">Queue.</span>enqueue to_visit root<span style="color: #a52a2a;">;</span>
-    <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">loop</span><span style="color: #a0522d;"> visited</span> <span style="color: #a52a2a;">=</span>
-      <span style="color: #228b22;">Option.</span>value_map
-        <span style="color: #707183;">(</span><span style="color: #228b22;">Queue.</span>dequeue to_visit<span style="color: #707183;">)</span>
-        <span style="color: #008b8b;">~default</span><span style="color: #a52a2a;">:</span><span style="color: #000000; background-color: #ffffff;">None</span>
-        <span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span><span style="color: #707183;">(</span><span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">id</span> <span style="color: #a52a2a;">-&gt;</span>
-            <span style="color: #a020f0;">if</span> action id <span style="color: #a020f0;">then</span> <span style="color: #000000; background-color: #ffffff;">Some</span> id
-            <span style="color: #a020f0;">else</span> <span style="color: #000000; font-weight: bold;">begin</span>
-              <span style="color: #a020f0;">if</span> <span style="color: #a52a2a;">not</span> <span style="color: #7388d6;">(</span><span style="color: #228b22;">Int.Set.</span>mem visited id<span style="color: #7388d6;">)</span> <span style="color: #a020f0;">then</span>
-                <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">children</span> <span style="color: #a52a2a;">=</span> <span style="color: #228b22;">Int.Set.</span>diff <span style="color: #7388d6;">(</span>outgoing id<span style="color: #7388d6;">)</span> visited <span style="color: #000000; font-weight: bold;">in</span>
-                <span style="color: #228b22;">Int.Set.</span>iter children <span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span><span style="color: #7388d6;">(</span><span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">n</span> <span style="color: #a52a2a;">-&gt;</span> <span style="color: #228b22;">Queue.</span>enqueue to_visit n<span style="color: #7388d6;">)</span><span style="color: #a52a2a;">;</span>
-                <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">visited'</span> <span style="color: #a52a2a;">=</span> <span style="color: #228b22;">Int.Set.</span>add visited id <span style="color: #000000; font-weight: bold;">in</span>
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">bfs_traverse_until</span><span class="org-variable-name"> g root </span><span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-variable-name">action</span> <span class="org-tuareg-font-lock-operator">=</span>
+    <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">outgoing</span> <span class="org-tuareg-font-lock-operator">=</span> mk_outgoing g
+    <span class="org-tuareg-font-lock-governing">and</span> <span class="org-variable-name">visited</span>  <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-module">Int.Set.</span>empty
+    <span class="org-tuareg-font-lock-governing">and</span> <span class="org-variable-name">to_visit</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-module">Queue.</span>create <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">()</span></span> <span class="org-tuareg-font-lock-governing">in</span>
+    <span class="org-tuareg-font-lock-module">Queue.</span>enqueue to_visit root<span class="org-tuareg-font-lock-operator">;</span>
+    <span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">rec</span> <span class="org-function-name">loop</span><span class="org-variable-name"> visited</span> <span class="org-tuareg-font-lock-operator">=</span>
+      <span class="org-tuareg-font-lock-module">Option.</span>value_map
+        <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-tuareg-font-lock-module">Queue.</span>dequeue to_visit<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+        <span class="org-constant">~default</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-tuareg-font-lock-constructor">None</span>
+        <span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-keyword">fun</span> <span class="org-variable-name">id</span> <span class="org-tuareg-font-lock-operator">-&gt;</span>
+            <span class="org-keyword">if</span> action id <span class="org-keyword">then</span> <span class="org-tuareg-font-lock-constructor">Some</span> id
+            <span class="org-keyword">else</span> <span class="org-tuareg-font-lock-governing">begin</span>
+              <span class="org-keyword">if</span> <span class="org-tuareg-font-lock-operator">not</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-tuareg-font-lock-module">Int.Set.</span>mem visited id<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span> <span class="org-keyword">then</span>
+                <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">children</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-module">Int.Set.</span>diff <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span>outgoing id<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span> visited <span class="org-tuareg-font-lock-governing">in</span>
+                <span class="org-tuareg-font-lock-module">Int.Set.</span>iter children <span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-keyword">fun</span> <span class="org-variable-name">n</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Queue.</span>enqueue to_visit n<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-tuareg-font-lock-operator">;</span>
+                <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">visited'</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-module">Int.Set.</span>add visited id <span class="org-tuareg-font-lock-governing">in</span>
                 loop visited'
-              <span style="color: #a020f0;">else</span>
+              <span class="org-keyword">else</span>
                 loop visited
-            <span style="color: #000000; font-weight: bold;">end</span>
-          <span style="color: #707183;">)</span>
-    <span style="color: #000000; font-weight: bold;">in</span> loop visited
+            <span class="org-tuareg-font-lock-governing">end</span>
+          <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+    <span class="org-tuareg-font-lock-governing">in</span> loop visited
 
-  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">route</span><span style="color: #a0522d;"> g n1 n2</span> <span style="color: #a52a2a;">=</span>
-    <span style="color: #228b22;">Option.</span>is_some <span style="color: #707183;">(</span>bfs_traverse_until g n1 <span style="color: #008b8b;">~f</span><span style="color: #a52a2a;">:</span><span style="color: #7388d6;">(</span><span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">node</span> <span style="color: #a52a2a;">-&gt;</span> node <span style="color: #a52a2a;">=</span> n2<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
-<span style="color: #000000; font-weight: bold;">end</span>
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">route</span><span class="org-variable-name"> g n1 n2</span> <span class="org-tuareg-font-lock-operator">=</span>
+    <span class="org-tuareg-font-lock-module">Option.</span>is_some <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>bfs_traverse_until g n1 <span class="org-constant">~f</span><span class="org-tuareg-font-lock-operator">:</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-keyword">fun</span> <span class="org-variable-name">node</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> node <span class="org-tuareg-font-lock-operator">=</span> n2<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+<span class="org-tuareg-font-lock-governing">end</span>
 
-<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">my_graph</span> <span style="color: #a52a2a;">:</span> <span style="color: #228b22;">Graph.</span><span style="color: #228b22;">graph </span><span style="color: #a52a2a;">=</span>
-  <span style="color: #707183;">{</span> <span style="color: #228b22;">Graph.</span>nodes <span style="color: #a52a2a;">=</span> <span style="color: #7388d6;">[</span>1<span style="color: #a52a2a;">;</span>2<span style="color: #a52a2a;">;</span>3<span style="color: #a52a2a;">;</span>4<span style="color: #a52a2a;">;</span>5<span style="color: #a52a2a;">;</span>6<span style="color: #a52a2a;">;</span>7<span style="color: #a52a2a;">;</span>8<span style="color: #a52a2a;">;</span>9<span style="color: #a52a2a;">;</span>10<span style="color: #7388d6;">]</span>
-  <span style="color: #a52a2a;">;</span> <span style="color: #228b22;">Graph.</span>edges <span style="color: #a52a2a;">=</span> <span style="color: #7388d6;">[</span><span style="color: #909183;">(</span>1<span style="color: #a52a2a;">,</span>2<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>1<span style="color: #a52a2a;">,</span>3<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>1<span style="color: #a52a2a;">,</span>5<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>1<span style="color: #a52a2a;">,</span>8<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>1<span style="color: #a52a2a;">,</span>9<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>2<span style="color: #a52a2a;">,</span>3<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>2<span style="color: #a52a2a;">,</span>10<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>2<span style="color: #a52a2a;">,</span>7<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>3<span style="color: #a52a2a;">,</span>8<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>4<span style="color: #a52a2a;">,</span>6<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>4<span style="color: #a52a2a;">,</span>10<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>5<span style="color: #a52a2a;">,</span>4<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>5<span style="color: #a52a2a;">,</span>6<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>6<span style="color: #a52a2a;">,</span>3<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>7<span style="color: #a52a2a;">,</span>8<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>7<span style="color: #a52a2a;">,</span>10<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>7<span style="color: #a52a2a;">,</span>1<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>8<span style="color: #a52a2a;">,</span>9<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>8<span style="color: #a52a2a;">,</span>6<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>9<span style="color: #a52a2a;">,</span>6<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>9<span style="color: #a52a2a;">,</span>3<span style="color: #909183;">)</span>
-                  <span style="color: #a52a2a;">;</span><span style="color: #909183;">(</span>10<span style="color: #a52a2a;">,</span>9<span style="color: #909183;">)</span><span style="color: #a52a2a;">;</span> <span style="color: #909183;">(</span>10<span style="color: #a52a2a;">,</span>8<span style="color: #909183;">)</span><span style="color: #7388d6;">]</span> <span style="color: #707183;">}</span>
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">my_graph</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Graph.</span><span class="org-type">graph </span><span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">{</span></span> <span class="org-tuareg-font-lock-module">Graph.</span>nodes <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">[</span></span>1<span class="org-tuareg-font-lock-operator">;</span>2<span class="org-tuareg-font-lock-operator">;</span>3<span class="org-tuareg-font-lock-operator">;</span>4<span class="org-tuareg-font-lock-operator">;</span>5<span class="org-tuareg-font-lock-operator">;</span>6<span class="org-tuareg-font-lock-operator">;</span>7<span class="org-tuareg-font-lock-operator">;</span>8<span class="org-tuareg-font-lock-operator">;</span>9<span class="org-tuareg-font-lock-operator">;</span>10<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">]</span></span>
+  <span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-module">Graph.</span>edges <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">[</span></span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>1<span class="org-tuareg-font-lock-operator">,</span>2<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>1<span class="org-tuareg-font-lock-operator">,</span>3<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>1<span class="org-tuareg-font-lock-operator">,</span>5<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>1<span class="org-tuareg-font-lock-operator">,</span>8<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>1<span class="org-tuareg-font-lock-operator">,</span>9<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>2<span class="org-tuareg-font-lock-operator">,</span>3<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>2<span class="org-tuareg-font-lock-operator">,</span>10<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>2<span class="org-tuareg-font-lock-operator">,</span>7<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>3<span class="org-tuareg-font-lock-operator">,</span>8<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>4<span class="org-tuareg-font-lock-operator">,</span>6<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>4<span class="org-tuareg-font-lock-operator">,</span>10<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>5<span class="org-tuareg-font-lock-operator">,</span>4<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>5<span class="org-tuareg-font-lock-operator">,</span>6<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>6<span class="org-tuareg-font-lock-operator">,</span>3<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>7<span class="org-tuareg-font-lock-operator">,</span>8<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>7<span class="org-tuareg-font-lock-operator">,</span>10<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>7<span class="org-tuareg-font-lock-operator">,</span>1<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>8<span class="org-tuareg-font-lock-operator">,</span>9<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>8<span class="org-tuareg-font-lock-operator">,</span>6<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>9<span class="org-tuareg-font-lock-operator">,</span>6<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>9<span class="org-tuareg-font-lock-operator">,</span>3<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+                  <span class="org-tuareg-font-lock-operator">;</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>10<span class="org-tuareg-font-lock-operator">,</span>9<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">(</span></span>10<span class="org-tuareg-font-lock-operator">,</span>8<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-2">]</span></span> <span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 </pre>
 </div>
 

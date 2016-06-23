@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-12 Sat 00:34 -->
+<!-- 2016-06-23 Thu 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Dynamic Scope In Racket</title>
@@ -97,6 +97,7 @@
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 <script type="text/javascript">
 /*
@@ -165,13 +166,13 @@ dynamically, but forces you to set a default value.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> <span style="color: #7388d6;">(</span>make-parameter 2<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-function-name">x</span> <span class="org-rainbow-delimiters-depth-2">(</span>make-parameter 2<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">incr-x</span><span style="color: #7388d6;">)</span> <span style="color: #7388d6;">(</span>+ <span style="color: #909183;">(</span>x<span style="color: #909183;">)</span> 1<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">incr-x</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>+ <span class="org-rainbow-delimiters-depth-3">(</span>x<span class="org-rainbow-delimiters-depth-3">)</span> 1<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">dynamic-x</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">parameterize</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    <span style="color: #909183;">(</span>incr-x<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">dynamic-x</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">parameterize</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>x 5<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>incr-x<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -182,7 +183,7 @@ results in <code>2</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span>incr-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 3</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span>incr-x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">=&gt; 3</span>
 </pre>
 </div>
 
@@ -192,7 +193,7 @@ However, you can associate a new value to the <code>x</code> parameter using <co
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span>dynamic-x<span style="color: #707183;">)</span> <span style="color: #b22222;">;</span><span style="color: #b22222;">=&gt; 6</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span>dynamic-x<span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">;</span><span class="org-comment">=&gt; 6</span>
 </pre>
 </div>
 

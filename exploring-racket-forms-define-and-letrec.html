@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-12 Sat 00:34 -->
+<!-- 2016-06-23 Thu 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Exploring Racket Forms: define and letrec</title>
@@ -97,6 +97,7 @@
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 <script type="text/javascript">
 /*
@@ -159,10 +160,10 @@ valid:
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">define</span> <span style="color: #7388d6;">(</span><span style="color: #0000ff;">future-bound</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #909183;">(</span><span style="color: #0000ff;">f</span><span style="color: #909183;">)</span> <span style="color: #909183;">(</span>+ x 1<span style="color: #909183;">)</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> 5<span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">future-bound</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-function-name">f</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-3">(</span>+ x 1<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">define</span> <span class="org-function-name">x</span> 5<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -173,13 +174,13 @@ desugared into nested <code>let</code>&rsquo;s or perhaps <code>let*</code>, lik
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span><span style="color: #a020f0;">let</span> <span style="color: #909183;">(</span><span style="color: #709870;">[</span>x 5<span style="color: #709870;">]</span><span style="color: #909183;">)</span>
-    f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">[</span>x 5<span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let*</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-       <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  f<span style="color: #707183;">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let*</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+       <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  f<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -190,9 +191,9 @@ after <code>f</code> is bound. It turns out that <code>define</code> desugars in
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">letrec</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+         <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -208,10 +209,10 @@ wrapped in a <code>lambda</code>; if you try to look up too early, it won&rsquo;
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">Trying to reference a value immediately</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">letrec</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>six <span style="color: #709870;">(</span>+ x 1<span style="color: #709870;">)</span><span style="color: #909183;">]</span>
-         <span style="color: #909183;">[</span>x 5<span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  #t<span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">Trying to reference a value immediately</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">letrec</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>six <span class="org-rainbow-delimiters-depth-4">(</span>+ x 1<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span>
+         <span class="org-rainbow-delimiters-depth-3">[</span>x 5<span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  #t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -236,9 +237,9 @@ this example only binds one symbol anyways):
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">loophole?</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  f<span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">loophole?</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  f<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -249,9 +250,9 @@ actually try to evaluate <code>f</code>, we&rsquo;ll run into problems.
 
 <div class="org-src-container">
 
-<pre class="src src-scheme"><span style="color: #b22222;">; </span><span style="color: #b22222;">=&gt; Error: struct:exn:fail:contract</span>
-<span style="color: #707183;">(</span><span style="color: #a020f0;">let</span> <span style="color: #7388d6;">(</span><span style="color: #909183;">[</span>f <span style="color: #709870;">(</span><span style="color: #a020f0;">&#955;</span> <span style="color: #907373;">()</span> <span style="color: #907373;">(</span>+ x 1<span style="color: #907373;">)</span><span style="color: #709870;">)</span><span style="color: #909183;">]</span><span style="color: #7388d6;">)</span>
-  <span style="color: #7388d6;">(</span>f<span style="color: #7388d6;">)</span><span style="color: #707183;">)</span>
+<pre class="src src-scheme"><span class="org-comment-delimiter">; </span><span class="org-comment">=&gt; Error: struct:exn:fail:contract</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">let</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">[</span>f <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">&#955;</span> <span class="org-rainbow-delimiters-depth-5">()</span> <span class="org-rainbow-delimiters-depth-5">(</span>+ x 1<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>f<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>

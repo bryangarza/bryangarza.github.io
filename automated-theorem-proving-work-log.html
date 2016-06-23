@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-12 Sat 00:34 -->
+<!-- 2016-06-23 Thu 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Automated Theorem Proving Work Log</title>
@@ -97,6 +97,7 @@
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 <script type="text/javascript">
 /*
@@ -288,16 +289,16 @@ Our type:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a formula</span> <span style="color: #a52a2a;">=</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">False</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Atom</span> <span style="color: #a020f0;">of</span> 'a
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Not</span> <span style="color: #a020f0;">of</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">And</span> <span style="color: #a020f0;">of</span> 'a formula <span style="color: #a52a2a;">*</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Or</span> <span style="color: #a020f0;">of</span> 'a formula <span style="color: #a52a2a;">*</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Imp</span> <span style="color: #a020f0;">of</span> 'a formula <span style="color: #a52a2a;">*</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Iff</span> <span style="color: #a020f0;">of</span> 'a formula <span style="color: #a52a2a;">*</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Forall</span> <span style="color: #a020f0;">of</span> string <span style="color: #a52a2a;">*</span> 'a formula
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Exists</span> <span style="color: #a020f0;">of</span> string <span style="color: #a52a2a;">*</span> 'a formula
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a formula</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">False</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Atom</span> <span class="org-keyword">of</span> 'a
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Not</span> <span class="org-keyword">of</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">And</span> <span class="org-keyword">of</span> 'a formula <span class="org-tuareg-font-lock-operator">*</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Or</span> <span class="org-keyword">of</span> 'a formula <span class="org-tuareg-font-lock-operator">*</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Imp</span> <span class="org-keyword">of</span> 'a formula <span class="org-tuareg-font-lock-operator">*</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Iff</span> <span class="org-keyword">of</span> 'a formula <span class="org-tuareg-font-lock-operator">*</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Forall</span> <span class="org-keyword">of</span> string <span class="org-tuareg-font-lock-operator">*</span> 'a formula
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Exists</span> <span class="org-keyword">of</span> string <span class="org-tuareg-font-lock-operator">*</span> 'a formula
 </pre>
 </div>
 </div>
@@ -351,15 +352,15 @@ There&rsquo;s an explanation of duality, in which <code>And</code>&rsquo;s are s
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">dual</span><span style="color: #a0522d;"> fm</span> <span style="color: #a52a2a;">=</span>
-  <span style="color: #a020f0;">match</span> fm <span style="color: #a020f0;">with</span>
-    <span style="color: #000000; background-color: #ffffff;">False</span>    <span style="color: #a52a2a;">-&gt;</span> <span style="color: #000000; background-color: #ffffff;">True</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">True</span>     <span style="color: #a52a2a;">-&gt;</span> <span style="color: #000000; background-color: #ffffff;">False</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Atom</span><span style="color: #707183;">(</span>p<span style="color: #707183;">)</span>  <span style="color: #a52a2a;">-&gt;</span> fm
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Not</span><span style="color: #707183;">(</span>p<span style="color: #707183;">)</span>   <span style="color: #a52a2a;">-&gt;</span> <span style="color: #000000; background-color: #ffffff;">Not</span><span style="color: #707183;">(</span>dual p<span style="color: #707183;">)</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">And</span><span style="color: #707183;">(</span>p<span style="color: #a52a2a;">,</span>q<span style="color: #707183;">)</span> <span style="color: #a52a2a;">-&gt;</span> <span style="color: #000000; background-color: #ffffff;">Or</span><span style="color: #707183;">(</span>dual p<span style="color: #a52a2a;">,</span>dual q<span style="color: #707183;">)</span>
-  <span style="color: #a52a2a;">|</span> <span style="color: #000000; background-color: #ffffff;">Or</span><span style="color: #707183;">(</span>p<span style="color: #a52a2a;">,</span>q<span style="color: #707183;">)</span>  <span style="color: #a52a2a;">-&gt;</span> <span style="color: #000000; background-color: #ffffff;">And</span><span style="color: #707183;">(</span>dual p<span style="color: #a52a2a;">,</span>dual q<span style="color: #707183;">)</span>
-  <span style="color: #a52a2a;">|</span> _        <span style="color: #a52a2a;">-&gt;</span> <span style="color: #483d8b;">failwith</span> <span style="color: #8b2252;">"Formula involves connectives ==&gt; or &lt;=&gt;"</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">rec</span> <span class="org-function-name">dual</span><span class="org-variable-name"> fm</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-keyword">match</span> fm <span class="org-keyword">with</span>
+    <span class="org-tuareg-font-lock-constructor">False</span>    <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-constructor">True</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">True</span>     <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-constructor">False</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Atom</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>p<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>  <span class="org-tuareg-font-lock-operator">-&gt;</span> fm
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Not</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>p<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>   <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-constructor">Not</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>dual p<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">And</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>p<span class="org-tuareg-font-lock-operator">,</span>q<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span> <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-constructor">Or</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>dual p<span class="org-tuareg-font-lock-operator">,</span>dual q<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Or</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>p<span class="org-tuareg-font-lock-operator">,</span>q<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>  <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-constructor">And</span><span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">(</span></span>dual p<span class="org-tuareg-font-lock-operator">,</span>dual q<span class="org-tuareg-font-lock-operator"><span class="org-rainbow-delimiters-depth-1">)</span></span>
+  <span class="org-tuareg-font-lock-operator">|</span> _        <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-builtin">failwith</span> <span class="org-string">"Formula involves connectives ==&gt; or &lt;=&gt;"</span>
 </pre>
 </div>
 

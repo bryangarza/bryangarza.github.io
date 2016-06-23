@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-03-12 Sat 00:34 -->
+<!-- 2016-06-23 Thu 12:46 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>Universal Quantification in OCaml</title>
@@ -97,6 +97,7 @@
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+<link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
 <script type="text/javascript">
 /*
@@ -159,7 +160,7 @@ annotations are inline with your code. When you write a function like:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">foo</span> <span style="color: #a52a2a;">:</span> <span style="color: #228b22;">'a </span><span style="color: #a52a2a;">-&gt;</span><span style="color: #228b22;"> 'a </span><span style="color: #a52a2a;">=</span> <span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">x</span> <span style="color: #a52a2a;">-&gt;</span> 0
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">foo</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">'a </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> 'a </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 0
 </pre>
 </div>
 <p>
@@ -170,7 +171,7 @@ to annotate:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">foo</span> <span style="color: #a52a2a;">:</span> <span style="color: #228b22;">'a. 'a </span><span style="color: #a52a2a;">-&gt;</span><span style="color: #228b22;"> 'a </span><span style="color: #a52a2a;">=</span> <span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">x</span> <span style="color: #a52a2a;">-&gt;</span> 0
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">foo</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">'a. 'a </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> 'a </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 0
 </pre>
 </div>
 <p>
@@ -184,7 +185,7 @@ the compiler.
 </p>
 
 <p>
-There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street's blog</a>.
+There&rsquo;s some more info about this on <a href="http://stackoverflow.com/questions/23323032/in-ocaml-what-type-definition-is-this-a-unit-a">SO</a> and <a href="https://blogs.janestreet.com/ensuring-that-a-function-is-polymorphic-in-ocaml-3-12/">Jane Street&rsquo;s blog</a>.
 </p>
 </div>
 <div id="postamble" class="status">

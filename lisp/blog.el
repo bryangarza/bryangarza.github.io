@@ -35,6 +35,7 @@
 
            :html-head "
 <link href=\"https://fonts.googleapis.com/css?family=Source+Code+Pro\" rel=\"stylesheet\" type=\"text/css\">
+<link href=\"./css/styles2.css\" rel=\"stylesheet\">
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/styles.css\"/>"
 
            :auto-sitemap t
@@ -66,7 +67,9 @@
   ;; use <header>, <aside>, and other fancy tags
   (setq org-html-validation-link nil)
   (setq org-html-doctype "html5")
-  (setq org-html-html5-fancy t))
+  (setq org-html-html5-fancy t)
+  (setq org-html-htmlize-output-type 'css) ; default: 'inline-css
+  (setq org-html-htmlize-font-prefix "org-")) ; default "org-"
 
 (defun bryan/org-escape-html (str)
   (mapconcat #'identity `("" "#+BEGIN_HTML" ,str "#+END_HTML" "") "\n"))
