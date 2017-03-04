@@ -34,7 +34,6 @@
            :html-head-include-scripts nil
 
            :html-head "
-<link href=\"https://fonts.googleapis.com/css?family=Source+Code+Pro\" rel=\"stylesheet\" type=\"text/css\">
 <link href=\"./css/styles2.css\" rel=\"stylesheet\">
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/styles.css\"/>"
 
@@ -55,7 +54,7 @@
            :include ("rss.org")
            :with-toc nil
            :section-numbers nil
-           :title "Camels, Aliens, &amp; Other Strange Creatures")))
+           :title "Bryan Garza")))
 
   (defadvice org-rss-headline
       (around my-rss-headline (headline contents info) activate)
