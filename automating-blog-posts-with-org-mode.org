@@ -2,11 +2,9 @@
 #+DATE: [2016-01-31 Sun]
 #+KEYWORDS: emacs, org-mode, blogging, elisp
 #+DESCRIPTION: How I create new blog posts
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./automating-blog-posts-with-org-mode.html, Automating Blog Posts With Org-mode, January 31\, 2016)}}}
 
 The best way to get me writing is to remove all barriers that slow me down. This
 especially includes the setup of creating a new post in =org-mode= and writing its
@@ -78,3 +76,5 @@ care of the rest.
   (goto-char (point-max))
   (message "Generated template"))
 #+END_SRC
+
+{{{ediv}}}

@@ -2,11 +2,9 @@
 #+DATE: [2016-03-10 Thu]
 #+KEYWORDS: racket, scope, dynamic, static
 #+DESCRIPTION: How to use dynamic scope in Racket
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./dynamic-scope-in-racket.html, Dynamic Scope In Racket, March 10\, 2016)}}}
 
 One way to do dynamic scope is with [[https://www.gnu.org/software/mit-scheme/documentation/mit-scheme-ref/Dynamic-Binding.html][fluid-let]], which basically reassigns the
 value of a variable instead of creating a shadow, but though this is available
@@ -41,3 +39,5 @@ However, you can associate a new value to the ~x~ parameter using ~parameterize~
 An advantage of ~parameterize~ over imperative updates of parameter values is
 that the implementation is thread-safe, and continuation-friendly. There are a
 few other pluses in addition to that, which you can check out in the docs.
+
+{{{ediv}}}

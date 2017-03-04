@@ -2,11 +2,9 @@
 #+DATE: [2016-02-04 Thu]
 #+KEYWORDS: ocaml, invariants, concrete types, abstract types
 #+DESCRIPTION: Abstract types versus concrete types
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./on-the-importance-of-enforcing-invariants.html, On The Importance Of Enforcing Invariants, February 4\, 2016)}}}
 
 Something that comes up early on when learning OCaml is the topic of abstract
 types. Comparable to "encapsulation" in object-oriented programming, one purpose
@@ -27,3 +25,5 @@ On the other hand, sometimes you /do/ want to have concrete types in your
 interface, and that's okay too. It gives more flexibility to the user, since
 they can construct those types by hand, and have more detail about the internals
 of the module.
+
+{{{ediv}}}

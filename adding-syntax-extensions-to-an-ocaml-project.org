@@ -2,11 +2,9 @@
 #+DATE: [2016-02-08 Mon]
 #+KEYWORDS: ocaml, syntax extensions, oasis
 #+DESCRIPTION: How to start using syntax extensions
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./adding-syntax-extensions-to-an-ocaml-project.html">Adding Syntax Extensions To An OCaml Project</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 8, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./adding-syntax-extensions-to-an-ocaml-project.html, Adding Syntax Extensions To An OCaml Project, February 8\, 2016)}}}
 
 Here's the set of steps needed to start using syntax extensions. I'll be using
 [[https://github.com/janestreet/sexplib][sexplib]] as the example.

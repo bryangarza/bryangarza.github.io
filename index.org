@@ -1,83 +1,26 @@
 #+TITLE: Home
-#+AUTHOR: Bryan Garza
 #+DATE: [2016-01-01 Fri]
-#+EMAIL: brygarza@gmail.com
-#+OPTIONS: title:nil H:5
+#+OPTIONS: H:5
+#+SETUPFILE: setup.org
 
-I'm a software engineer interested in {programming, foreign} languages and
-distributed systems. You'll often find me hacking on Haskell, Racket, and Emacs
-Lisp. ([[https://github.com/bryangarza][GitHub]], [[https://keybase.io/bryangarza][Keybase]], [[mailto:brygarza@gmail.com][Contact]], [[http://themattchan.com/plquotes.html][PL quotes]])
+I'm a backend engineer interested in programming language theory, operating
+systems, and distributed systems. My primary languages are Haskell and C.
 
-* All Posts @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./exploring-racket-forms-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "exploring-racket-forms-define-and-letrec.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+~ [[https://github.com/bryangarza][GitHub]], [[mailto:bry@riseup.net][Contact]], [[file:bry.asc][PGP key]], [[http://themattchan.com/plquotes.html][PL quotes]]
 
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./dynamic-scope-in-racket.html">Dynamic Scope In Racket</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 10, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "dynamic-scope-in-racket.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+* All Posts {{{archive}}}
+#+INCLUDE: "exploring-racket-forms-define-and-letrec.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "s-expressions-as-a-lightweight-serialization-format.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "dynamic-scope-in-racket.org" :lines "{{{numlines}}}-"
 
-# #+BEGIN_HTML
-# <div class="outline-3"><h3><a href="./automated-theorem-proving-work-log.html">Automated Theorem Proving Work Log</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 12, 2016)</span></span></h3>
-# #+END_HTML
-# #+INCLUDE: "automated-theorem-proving-work-log.org" :lines "11-"
-# #+BEGIN_HTML
-# </div>
-# #+END_HTML
+#+INCLUDE: "s-expressions-as-a-lightweight-serialization-format.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./adding-syntax-extensions-to-an-ocaml-project.html">Adding Syntax Extensions To An OCaml Project</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 8, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "adding-syntax-extensions-to-an-ocaml-project.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "adding-syntax-extensions-to-an-ocaml-project.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./on-the-importance-of-enforcing-invariants.html">On The Importance Of Enforcing Invariants</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 4, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "on-the-importance-of-enforcing-invariants.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "on-the-importance-of-enforcing-invariants.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3">
-<h3><a href="./universal-quantification-in-ocaml.html">Universal Quantification in OCaml</a> <span class="timestamp-wrapper"><span class="timestamp">(February 2, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "universal-quantification-in-ocaml.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "universal-quantification-in-ocaml.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3"><h3><a href="./automating-blog-posts-with-org-mode.html">Automating Blog Posts With Org-mode</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 31, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "automating-blog-posts-with-org-mode.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "automating-blog-posts-with-org-mode.org" :lines "{{{numlines}}}-"
 
-#+BEGIN_HTML
-<div class="outline-3 bottom-post"><h3><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h3>
-#+END_HTML
-#+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "11-"
-#+BEGIN_HTML
-</div>
-#+END_HTML
+#+INCLUDE: "basic-graph-traversal-in-ocaml.org" :lines "{{{numlines}}}-"

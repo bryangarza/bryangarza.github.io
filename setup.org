@@ -1,0 +1,7 @@
+#+AUTHOR: Bryan Garza
+#+EMAIL: bry@riseup.net
+#+OPTIONS: title:nil
+#+MACRO:post_title @@html:<div class="outline-3"><h3><a href="$1">$2</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">($3)</span></span></h3>@@
+#+MACRO:archive @@html:<span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span>@@
+#+MACRO:numlines 7
+#+MACRO:ediv @@html:</div>@@

@@ -2,11 +2,9 @@
 #+DATE: [2016-02-17 Wed]
 #+KEYWORDS: s-expressions, sexprs, lisp, ocaml, ipc, serialization
 #+DESCRIPTION: How to use sexprs for inter-process communication
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./s-expressions-as-a-lightweight-serialization-format.html">S-expressions as a Lightweight Serialization Format</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(February 17, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./s-expressions-as-a-lightweight-serialization-format.html, S-expressions as a Lightweight Serialization Format, February 17\, 2016)}}}
 
 I've been writing a desktop application that uses OCaml for the backend, and
 Racket for the GUI frontend. To communicate between the two, I call the OCaml
@@ -66,3 +64,5 @@ racket@app.rkt> (book-subjects (isbn-lookup "0521663504"))
 Similarly, I can work in the other direction, and pass Racket s-expressions to
 OCaml, and using sexplib, convert them back to OCaml types. What a time to be
 alive!
+
+{{{ediv}}}

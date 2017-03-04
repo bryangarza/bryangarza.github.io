@@ -1,12 +1,12 @@
 (defun bryan/blog ()
-  (setq bryan/blog-blogdir "~/org/new-site/")
+  (setq bryan/blog-blogdir "~/txt/bryangarza.github.io/")
   (setq bryan/blog-indexfile (concat bryan/blog-blogdir "index.org"))
   (setq bryan/blog-rssfile (concat bryan/blog-blogdir "rss.org"))
 
   (setq org-publish-project-alist
         '(("blog"
-           :base-directory "~/org/new-site/"
-           :publishing-directory "~/org/new-site/"
+           :base-directory "~/txt/bryangarza.github.io/"
+           :publishing-directory "~/txt/bryangarza.github.io/"
            :recursive t
 
            :base-extension "org"
@@ -15,7 +15,7 @@
            :publishing-function (org-html-publish-to-html)
            :exclude "rss.org"
 
-           :html-preamble "<h1 class=\"title\"><a href=\"http://bryangarza.github.io\">val bryan : sushi -> emacs -> code </a></h1>"
+           :html-preamble "<h1 class=\"title\"><a href=\"http://bryangarza.github.io\">Bryan Garza</a></h1>"
            :html-postamble
            (lambda (info)
              "Do not show archive link in Archive, show link to index instead"
@@ -30,8 +30,8 @@
            :with-tables t
            :section-numbers nil
            :with-smart-quotes t
-           ;; :html-head-include-default-style nil
-           ;; :html-head-include-scripts nil
+           :html-head-include-default-style nil
+           :html-head-include-scripts nil
 
            :html-head "
 <link href=\"https://fonts.googleapis.com/css?family=Source+Code+Pro\" rel=\"stylesheet\" type=\"text/css\">
@@ -45,9 +45,9 @@
            :sitemap-style list)
 
           ("blog-rss"
-           :base-directory "~/org/new-site/"
+           :base-directory "~/txt/bryangarza.github.io/"
            :base-extension "org"
-           :publishing-directory "~/org/new-site/"
+           :publishing-directory "~/txt/bryangarza.github.io/"
            :publishing-function (org-rss-publish-to-rss)
            :html-link-home "http://bryangarza.github.io/"
            :html-link-use-abs-url t

@@ -2,11 +2,9 @@
 #+DATE: [2016-03-11 Fri]
 #+KEYWORDS: racket, scheme, desugar, define, let, letrec
 #+DESCRIPTION: How define desugars in Racket
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./exploring-racket-forms-define-and-letrec.html">Exploring Racket Forms: define and letrec</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(March 11, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./exploring-racket-forms-define-and-letrec.html, Exploring Racket Forms: define and letrec, March 11\, 2016)}}}
 
 A couple weeks ago I was trying to understand why expressions like this were
 valid:
@@ -82,3 +80,5 @@ actually try to evaluate ~f~, we'll run into problems.
 (let ([f (λ () (+ x 1))])
   (f))
 #+END_SRC
+
+{{{ediv}}}

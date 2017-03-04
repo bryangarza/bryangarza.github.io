@@ -2,11 +2,9 @@
 #+DATE: [2016-01-28 Thu]
 #+KEYWORDS: ocaml, algorithms, graphs, cracking the coding interview
 #+DESCRIPTION: Solution to a graph problem from CTCI
-#+OPTIONS: title:nil
+#+SETUPFILE: setup.org
 
-#+BEGIN_HTML
-<header><h1 class="title"><a href="./basic-graph-traversal-in-ocaml.html">Basic Graph Traversal in OCaml</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">(January 28, 2016)</span></span></h1></header>
-#+END_HTML
+{{{post_title(./basic-graph-traversal-in-ocaml.html, Basic Graph Traversal in OCaml, January 28\, 2016)}}}
 
 This is my solution to Cracking The Coding Interview problem 4.2.
 The problem is: Given a directed graph, design an algorithm to find out whether
@@ -84,3 +82,5 @@ utop[6]> Graph.route my_graph 3 9;;
 utop[7]> Graph.route my_graph 4 7;;
 - : bool = false
 #+END_EXAMPLE
+
+{{{ediv}}}
