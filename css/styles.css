@@ -8,7 +8,7 @@ body {
   background-color: #fffff6;
   color: #111111;
   font-size: 15px;
-  max-width: 680px;
+  max-width: 615px;
   margin-left: 4%;
   margin-right: 4%;
 }
@@ -146,7 +146,7 @@ pre.src, pre.example {
   margin: 0;
   padding-left: 1em;
   /* font-size: 13px; */
-  font-size: 14px;
+  font-size: 12px;
   line-height: 130%;
 }
 
