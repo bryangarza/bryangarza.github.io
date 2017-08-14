@@ -9,6 +9,8 @@ systems, and distributed systems. My favorite languages are Haskell and C.
 ~ [[https://github.com/bryangarza][GitHub]], [[mailto:bry@riseup.net][Contact]], [[file:bry.asc][PGP key]], [[http://themattchan.com/plquotes.html][PL quotes]]
 
 * All Posts {{{archive}}}
+#+INCLUDE: "leopold-fc750r-mechanical-keyboard-review.org" :lines "{{{numlines}}}-"
+
 #+INCLUDE: "exploring-racket-forms-define-and-letrec.org" :lines "{{{numlines}}}-"
 
 #+INCLUDE: "dynamic-scope-in-racket.org" :lines "{{{numlines}}}-"
