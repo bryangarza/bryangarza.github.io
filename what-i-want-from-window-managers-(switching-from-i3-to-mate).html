@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What I Want From Window Managers (Switching from i3 to MATE)</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Bryan Garza">
+<meta name="description" content="First impressions switching to MATE"
+>
+<meta name="keywords" content="i3wm, MATE, window managers, desktop environments, productivity, Linux workflow">
+
+<link href="./css/styles2.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./css/styles.css"/>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class="title"><a href="http://bryangarza.github.io">Bryan Garza</a></h1>
+</div>
+<div id="content">
+<p>
+<div class="outline-3"><h3><a href="./what-i-want-from-window-managers-(switching-from-i3-to-mate).html"> What I Want From Window Managers (Switching from i3 to MATE)</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">( August 20, 2017)</span></span></h3>
+</p>
+
+<p>
+I decided to try and switch to a different window manager, namely because I was
+tired of switching to the wrong workspace in i3. Even though I for the most part
+put the same applications on the same workspaces each time, I still spend too
+much time fumbling with which workspace I want. I tend to want at most 2 windows
+in view, usually as split columns. Occasionally I&rsquo;ll want 3 windows visible at
+once, but for the most part my workflow is having one or two visible
+windows. I&rsquo;ve put up with i3&rsquo;s manual layouts for years, mostly because its
+<a href="https://i3wm.org/i3bar/">i3bar</a> supports system applets out-of-the-box and it&rsquo;s too much effort to set up
+another window manager to work similarly, effort that could be spend working on
+something more productive.
+</p>
+
+<p>
+Before I get into more detail, here&rsquo;s some background on what window managers or
+desktop environments I&rsquo;ve used:
+</p>
+
+<ul class="org-ul">
+<li>GNOME 3: Sophomore year of high school I began to use Ubuntu</li>
+<li>XFCE: I remember at some point I switched to Xubuntu</li>
+<li>dwm: During junior year of high school, I switched to Arch Linux</li>
+<li>xmonad: I dabbled in this one for a few months as well</li>
+<li>i3wm: By the end of junior year I had switched to i3 for what I then
+considered to be &ldquo;sane&rdquo; multi-monitor support</li>
+<li>Aqua: Throughout college I used OS X (this was before I understood the gravity
+and importance of privacy)</li>
+<li>i3wm: I came back to using GNU/Linux a few months after finishing school, and
+naturally gravitated back to the last window manager I had used</li>
+<li>MATE: As of writing this post, I&rsquo;ve switched to a floating window manager,
+after analyzing my usual workflow</li>
+</ul>
+
+<p>
+During the time that I used dwm/xmonad/i3 in high school, I was active in the
+Arch Linux forums, as well as the <code>#archlinux</code> IRC channel. Back then, I was still
+learning to program and spent much of my time ricing my setup. As time went on
+and I became a decent programmer, I realized how I just wanted things to work
+correctly without fiddling, and that spending hours tweaking color schemes and
+other settings was a waste of my time. Furthermore, using OS X was a total 180
+from what I was previously used to, which required writing scripts for
+everything and manually binding to various keys, as well as manually triggering
+<code>arandr</code> commands to change my monitor layouts, etc.
+</p>
+
+<p>
+When I switched back to GNU/Linux last year I knew that I wanted to maintain the
+level of ease that is in OS X, at least for the essentials. One of those thing
+is the use of <code>alt-tab</code>. This doesn&rsquo;t really seem to be available in any tiling
+window managers. I started using <a href="https://davedavenport.github.io/rofi/">rofi</a> as a wannabe alt-tab switcher, but
+disliked having to type the beginning of a window&rsquo;s name to switch to it.
+</p>
+
+<p>
+One thing that drives me nuts to configure is status bars and applet trays. I
+really don&rsquo;t see the point in setting them up, and tiling window managers that
+ship without a decent status bar get a hard pass from me.
+</p>
+
+<p>
+My requirements, therefore, for switching to another window manager or desktop
+environment are that (1) there has to be an alt-tab switcher, (2) the status bar
+has to work out-of-the-box and support applets.
+</p>
+
+<p>
+Having heard of <a href="https://mate-desktop.org/">MATE</a> from a friend, I decided to give it a shot. First I
+installed the most minimal package from the Debian repositories, but then
+realized that even the full install didn&rsquo;t include that many extras. I also
+installed <code>mate-tweak</code> to be able to change some extra settings.
+</p>
+
+<p>
+The switch was also catalyzed by having read <a href="http://xahlee.info/linux/why_tiling_window_manager_sucks.html">Why Tiling Window Manager Sucks</a> by
+Xah Lee. I&rsquo;ve always respected his expertise on emacs, ergonomics, and general
+GNU/Linux usage, and it got me thinking that perhaps I was taking the wrong
+approach to window management, too chord-centric and complicated for what should
+require a minimal number of window manager actions, namely split left, split
+right, maximize window, close window, and rotate to next application.
+</p>
+
+<p>
+I removed most of the default MATE bindings, bound some of the Function keys to
+the previously mentioned most common window manager actions, and set up <a href="http://xahlee.info/linux/linux_add_keyboard_shortcuts_to_switch_to_app.html">wmctrl
+to switch to specific applications</a>. I also tried out Compiz for about an hour
+but it seemed buggy to me so I quickly went back to the &ldquo;Marco (Compton GPU
+Compositor)&rdquo; setting.
+</p>
+
+<p>
+So far, my current setup is basically how I use <a href="https://www.spectacleapp.com/">Spectacle</a> on OS X, but without
+using as many chords. Like I mentioned earlier, all I really want is to be able
+to put emacs on the left half, and either Chromium or urxvt on the right. For
+less used applications, I want to alt-tab to them. Simple as that. I don&rsquo;t need
+the tiling (manual or automatic), because if I&rsquo;m working on the x230, I don&rsquo;t
+have much screen real estate anyways, and if I&rsquo;m using the external monitor,
+well, I still don&rsquo;t want to have more than 2 or 3 visible windows.
+</p>
+
+<p>
+One unexpected side effect of switching to MATE is that monitors automatically
+work when plugged in. For i3, what I do is create an arandr script for each
+specific setup (HDMI only, HDMI with ThinkPad monitor on left, living room TV
+with ThinkPad on right, etc), and then launch said script with rofi. It&rsquo;s not
+ideal, and sometimes X freaks out on me and I get a black screen, forcing me to
+switch to another tty to kill the X server. I don&rsquo;t know if MATE will also have
+similar issues but at least when I plug in my external monitor, it&rsquo;s
+automatically enabled and the placement is saved. When I unplug the external
+monitor, it works like it should, changing to only use the ThinkPad monitor, and
+when the ThinkPad is closed and I disconnect the monitor, the ThinkPad goes to
+sleep like it should.
+</p>
+
+<p>
+I&rsquo;m still using <a href="https://i3wm.org/i3lock/">i3lock</a> (it seems to work on any WM or DE without having to touch
+it).
+</p>
+
+<p>
+The monitor support in MATE (or any other Desktop Environment, I&rsquo;m assuming) is
+enough reason to switch from a tiling window manager, or to switch to a
+combination of Desktop Environment plus tiling wm. It&rsquo;s 2017, no one should be
+using a tiling window manager standalone.
+</p>
+
+<p>
+I&rsquo;ve only had this setup for a day, and therefore haven&rsquo;t fully explored the
+pros and cons of i3 vs MATE (or tiling window managers vs Desktop Environments
+in the large); later on I might write a follow-up post, but for now, these are
+my first impressions.
+</p>
+</div>
+<div id="postamble" class="status">
+<a href="archive.html">Archive</a>
+</div>
+</body>
+</html>

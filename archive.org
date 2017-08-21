@@ -1,5 +1,6 @@
 #+TITLE: Archive
 
+   + [[file:what-i-want-from-window-managers-(switching-from-i3-to-mate).org][What I Want From Window Managers (Switching from i3 to MATE)]]
    + [[file:leopold-fc750r-mechanical-keyboard-review.org][Leopold FC750R Mechanical Keyboard Review]]
    + [[file:exploring-racket-forms-define-and-letrec.org][Exploring Racket Forms: define and letrec]]
    + [[file:dynamic-scope-in-racket.org][Dynamic Scope In Racket]]
