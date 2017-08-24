@@ -127,7 +127,7 @@
                ,(format "#+KEYWORDS: %s\n" keywords)
                ,(format "#+DESCRIPTION: %s\n" description)
                ,(format "#+SETUPFILE: %s\n" setupfile)
-               ,(format "\n{{{post_title(%s, %s, March 11\\, 2016)}}}\n\n"
+               ,(format "\n{{{post_title(%s, %s, %s)}}}\n\n"
                         relfile-html title date-human-readable))
         #'insert)
       (when (file-writable-p absfile)
