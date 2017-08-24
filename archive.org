@@ -1,5 +1,6 @@
 #+TITLE: Archive
 
+   + [[file:x230-coreboot-flashing-process.org][x230 Coreboot Flashing Process]]
    + [[file:what-i-want-from-window-managers-(switching-from-i3-to-mate).org][What I Want From Window Managers (Switching from i3 to MATE)]]
    + [[file:leopold-fc750r-mechanical-keyboard-review.org][Leopold FC750R Mechanical Keyboard Review]]
    + [[file:exploring-racket-forms-define-and-letrec.org][Exploring Racket Forms: define and letrec]]

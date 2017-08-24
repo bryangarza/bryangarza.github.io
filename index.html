@@ -6,7 +6,8 @@
 <title>Home</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="Bryan Garza">
-<meta name="description" content="First impressions switching to MATE
+<meta name="description" content="Recap of flashing Coreboot onto x230
+First impressions switching to MATE
 A review of the Leopold FC750R keyboard
 How define desugars in Racket
 How to use dynamic scope in Racket
@@ -17,7 +18,7 @@ Difference between using signatures and annotations in OCaml
 How I create new blog posts
 Solution to a graph problem from CTCI"
 >
-<meta name="keywords" content="i3wm, MATE, window managers, desktop environments, productivity, Linux workflow leopold fc750r, mechanical keyboards, product review, typing racket, scheme, desugar, define, let, letrec racket, scope, dynamic, static s-expressions, sexprs, lisp, ocaml, ipc, serialization ocaml, syntax extensions, oasis ocaml, invariants, concrete types, abstract types ocaml, types emacs, org-mode, blogging, elisp ocaml, algorithms, graphs, cracking the coding interview">
+<meta name="keywords" content="x230, coreboot, hardware flashing i3wm, MATE, window managers, desktop environments, productivity, Linux workflow leopold fc750r, mechanical keyboards, product review, typing racket, scheme, desugar, define, let, letrec racket, scope, dynamic, static s-expressions, sexprs, lisp, ocaml, ipc, serialization ocaml, syntax extensions, oasis ocaml, invariants, concrete types, abstract types ocaml, types emacs, org-mode, blogging, elisp ocaml, algorithms, graphs, cracking the coding interview">
 
 <link href="./css/styles2.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./css/styles.css"/>
@@ -39,6 +40,51 @@ systems, and distributed systems. My favorite languages are Haskell and C.
 <div id="outline-container-org61a5ee2" class="outline-2">
 <h2 id="org61a5ee2">All Posts <span class="archive"><a href="http://bryangarza.github.io/archive.html">(Archive)</a></span></h2>
 <div class="outline-text-2" id="text-org61a5ee2">
+<div class="lines">
+<p>
+<div class="outline-3"><h3><a href="./x230-coreboot-flashing-process.html"> x230 Coreboot Flashing Process</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">( August 23, 2017)</span></span></h3>
+</p>
+
+<p>
+I flashed <a href="https://www.coreboot.org">coreboot</a> onto my x230, using a Raspberry Pi Model B Rev 2.0. These are
+the resources I used (other than the coreboot wiki):
+</p>
+<ul class="org-ul">
+<li><a href="https://vimeo.com/177951809">Installing Coreboot On An X230 Laptop</a> (video)</li>
+<li><a href="https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi/">Coreboot On The ThinkPad X220 With A Raspberry Pi</a>, <a href="https://web.archive.org.org/web/20170824034651/https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi/">archive.org</a></li>
+<li><a href="https://blog.noq2.net/corebooting-thinkpad-x230.html">Corebooting Thinkpad X230</a>, <a href="https://web.archive.org.org/web/20170824034758/https://blog.noq2.net/corebooting-thinkpad-x230.html">archive.org</a></li>
+<li><a href="https://blog.noq2.net/corebooting-thinkpad-x230.html">Coreboot on the lenovo x230</a>, <a href="https://web.archive.org.org/web/20170824034927/https://www.ericholzbach.net/blog/x230_coreboot/">archive.org</a></li>
+<li><a href="https://www.ericholzbach.net/blog/x230_coreboot/">Coreboot for x230</a></li>
+<li><a href="https://github.com/bibanon/Coreboot-ThinkPads/wiki/Hardware-Flashing-with-Raspberry-Pi">Hardware Flashing with Raspberry Pi</a> (<a href="https://camo.githubusercontent.com/60f9bf2435afff147b8cf58c88376149fdcc9580/687474703a2f2f692e696d6775722e636f6d2f576b4e764f55792e706e67">Raspberry Pi Model B pin layout</a>, <a href="img/raspberry-pi-B_gpio-layout.png">mirror</a>)</li>
+</ul>
+
+<p>
+There are 2 ways to provide power to the BIOS chip. One way is to enable
+Wake-On-LAN on the existing BIOS and connect the AC adapter and an Ethernet
+cable; the computer should then supply 3.3V to the chip. However, I was unable
+to get that working, so instead I connected the Pi&rsquo;s pin #17 to pin #8 of the
+Macronix chip (<a href="http://html.alldatasheet.com/html-pdf/575458/MCNIX/MX25L3208EM2I12G/1149/7/MX25L3208EM2I12G.html">spec sheet</a>).
+</p>
+
+<p>
+Disassembly was dead-easy, though for next time, I ordered some plastic pry
+tools. Since I couldn&rsquo;t read the chip&rsquo;s model (too much glue residue), I read
+each of the four possible chips 3 times each, just in case. In hindsight, before
+putting everything back together I could&rsquo;ve used the <a href="https://github.com/corna/me_cleaner">me_cleaner</a> script to remove
+the Intel ME firmware from the flash chip. Right now <code>flashrom</code> reports that the
+Management Region is locked, meaning I&rsquo;ll have to do another hardware flash to
+get rid of it (there are some cases where this region has read/write permissions
+and you can just do an internal flash).
+</p>
+
+<p>
+Since flashing, I&rsquo;ve had no issues, everything is working perfectly. I bought a
+7260 ac card to replace my dog slow Centrino Wireless-N 2200 (since there&rsquo;s no
+whitelist anymore).
+</p>
+
+</div>
+
 <div class="lines">
 <p>
 <div class="outline-3"><h3><a href="./what-i-want-from-window-managers-(switching-from-i3-to-mate).html"> What I Want From Window Managers (Switching from i3 to MATE)</a><span> </span><span class="timestamp-wrapper"><span class="timestamp">( August 20, 2017)</span></span></h3>

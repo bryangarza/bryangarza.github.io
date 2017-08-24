@@ -1,0 +1,36 @@
+#+TITLE: x230 Coreboot Flashing Process
+#+DATE: [2017-08-23 Wed]
+#+KEYWORDS: x230, coreboot, hardware flashing
+#+DESCRIPTION: Recap of flashing Coreboot onto x230
+#+SETUPFILE: setup.org
+#+OPTIONS: ^:nil
+
+{{{post_title(./x230-coreboot-flashing-process.html, x230 Coreboot Flashing Process, August 23\, 2017)}}}
+
+I flashed [[https://www.coreboot.org][coreboot]] onto my x230, using a Raspberry Pi Model B Rev 2.0. These are
+the resources I used (other than the coreboot wiki):
+- [[https://vimeo.com/177951809][Installing Coreboot On An X230 Laptop]] (video)
+- [[https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi/][Coreboot On The ThinkPad X220 With A Raspberry Pi]], [[https://web.archive.org.org/web/20170824034651/https://tylercipriani.com/blog/2016/11/13/coreboot-on-the-thinkpad-x220-with-a-raspberry-pi/][archive.org]]
+- [[https://blog.noq2.net/corebooting-thinkpad-x230.html][Corebooting Thinkpad X230]], [[https://web.archive.org.org/web/20170824034758/https://blog.noq2.net/corebooting-thinkpad-x230.html][archive.org]]
+- [[https://blog.noq2.net/corebooting-thinkpad-x230.html][Coreboot on the lenovo x230]], [[https://web.archive.org.org/web/20170824034927/https://www.ericholzbach.net/blog/x230_coreboot/][archive.org]]
+- [[https://www.ericholzbach.net/blog/x230_coreboot/][Coreboot for x230]]
+- [[https://github.com/bibanon/Coreboot-ThinkPads/wiki/Hardware-Flashing-with-Raspberry-Pi][Hardware Flashing with Raspberry Pi]] ([[https://camo.githubusercontent.com/60f9bf2435afff147b8cf58c88376149fdcc9580/687474703a2f2f692e696d6775722e636f6d2f576b4e764f55792e706e67][Raspberry Pi Model B pin layout]], [[file:img/raspberry-pi-B_gpio-layout.png][mirror]])
+
+There are 2 ways to provide power to the BIOS chip. One way is to enable
+Wake-On-LAN on the existing BIOS and connect the AC adapter and an Ethernet
+cable; the computer should then supply 3.3V to the chip. However, I was unable
+to get that working, so instead I connected the Pi's pin #17 to pin #8 of the
+Macronix chip ([[http://html.alldatasheet.com/html-pdf/575458/MCNIX/MX25L3208EM2I12G/1149/7/MX25L3208EM2I12G.html][spec sheet]]).
+
+Disassembly was dead-easy, though for next time, I ordered some plastic pry
+tools. Since I couldn't read the chip's model (too much glue residue), I read
+each of the four possible chips 3 times each, just in case. In hindsight, before
+putting everything back together I could've used the [[https://github.com/corna/me_cleaner][me_cleaner]] script to remove
+the Intel ME firmware from the flash chip. Right now =flashrom= reports that the
+Management Region is locked, meaning I'll have to do another hardware flash to
+get rid of it (there are some cases where this region has read/write permissions
+and you can just do an internal flash).
+
+Since flashing, I've had no issues, everything is working perfectly. I bought a
+7260 ac card to replace my dog slow Centrino Wireless-N 2200 (since there's no
+whitelist anymore).
