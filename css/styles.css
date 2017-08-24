@@ -5,7 +5,7 @@ body {
   /* line-height: 24px; */
   /* line-height: 1.7em; */
   line-height: 130%;
-  background-color: #fffff6;
+  background-color: #ffffff;
   color: #111111;
   font-size: 15px;
   max-width: 615px;
@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  color: #703820;
+  color: #111111;
 }
 h2, h3, h4, h5 { font-weight: normal }
 
@@ -22,30 +22,21 @@ header, div#postamble, h1, h2, h3, h4, h5 {
   /*font-family: "Helvetica Neue", sans-serif;*/
 }
 
+
 a {
-  text-decoration: underline;
 }
 a:link {
-  color: #703820;
+  border-bottom: 2px solid #fff600;
+  text-decoration: none;
+  font-style: italic;
 }
 a:visited, p a:visited {
-  color: #333;
+  border-bottom: 2px solid #dbd800;
 }
 a:hover {
+  border-bottom: none;
   text-decoration: none;
-}
-
-h1 a:hover {
-  text-decoration: none;
-}
-
-h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link {
-  color: #703820;
-  text-decoration: none;
-}
-h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited {
-  color: #703820;
-  text-decoration: none;
+  text-shadow: 0 0 2px #999;
 }
 
 h1 {
@@ -79,7 +70,7 @@ span.timestamp-wrapper {
 }
 
 h2 > span a:link {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 h2 > span a:visited {
@@ -108,8 +99,9 @@ h3 {
 }
 
 code {
-  font-size: 15px;
-  color: #00e;
+  font-size: 14px;
+  background-color: #dddddd;
+  border-radius: 3px;
 }
 
 h2, h3, h4, h5 {
@@ -164,7 +156,7 @@ table {
 }
 
 table caption {
-    color: #703820;
+    color: #111111;
     font: italic 85%/1 arial, sans-serif;
     padding: 1em 0;
     text-align: center;
@@ -189,7 +181,7 @@ table th:first-child {
 
 table thead {
     background-color: #e0e0e0;
-    color: #703820;
+    color: #111111;
     text-align: left;
     vertical-align: bottom;
 }
