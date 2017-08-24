@@ -20,7 +20,7 @@
            (lambda (info)
              "Do not show archive link in Archive, show link to index instead"
              (cond ((string= (car (plist-get info :title)) "Archive")
-                    "<a href=\"./\">Back to index</a>")
+                    "<a href=\"./\">⬅ Back to index</a>")
                    (t "<a href=\"archive.html\">Archive</a>")))
 
            :html-doctype "html5"
