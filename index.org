@@ -4,7 +4,9 @@
 #+SETUPFILE: setup.org
 
 I'm a backend engineer interested in programming language theory, operating
-systems, and distributed systems. My favorite languages are Haskell and C.
+systems, and distributed systems. My favorite language is Haskell.
+
+I work at Amazon Lab126 in Cupertino.
 
 ~ [[https://github.com/bryangarza][GitHub]], [[mailto:bry@riseup.net][Contact]], [[file:bry.asc][PGP key]], [[http://themattchan.com/plquotes.html][PL quotes]]
 
