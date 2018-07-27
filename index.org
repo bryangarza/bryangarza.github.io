@@ -3,17 +3,19 @@
 #+OPTIONS: H:5
 #+SETUPFILE: setup.org
 
-I'm a backend engineer interested in programming language theory, operating
-systems, and distributed systems. My favorite language is Haskell.
+My interests include programming language theory / type theory, distributed
+systems, Linux, math rock, post-rock, high-end audio, and foreign languages.
 
-I work at Amazon Lab126 in Cupertino.
+I'm a software engineer at Amazon Lab126.
 
 ~ [[https://github.com/bryangarza][GitHub]], [[mailto:bry@riseup.net][Contact]], [[file:bry.asc][PGP key]], [[http://themattchan.com/plquotes.html][PL quotes]]
 
 * All Posts {{{archive}}}
+#+INCLUDE: "chon-concert-with-tricot-polyphia-and-ttng.org" :lines "{{{numlines}}}-"
+
 #+INCLUDE: "x230-coreboot-flashing-process.org" :lines "{{{numlines}}}-"
 
-#+INCLUDE: "what-i-want-from-window-managers-(switching-from-i3-to-mate).org" :lines "{{{numlines}}}-"
+#+INCLUDE: "what-i-want-from-window-managers-switching-from-i3-to-mate.org" :lines "{{{numlines}}}-"
 
 #+INCLUDE: "leopold-fc750r-mechanical-keyboard-review.org" :lines "{{{numlines}}}-"
 

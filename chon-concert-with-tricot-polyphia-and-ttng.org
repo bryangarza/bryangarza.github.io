@@ -1,0 +1,23 @@
+#+TITLE: CHON concert (with Tricot, Polyphia, and TTNG)
+#+DATE: [2018-07-26 Thu]
+#+KEYWORDS: math rock, live music, concert
+#+DESCRIPTION: Account of the CHON concert in San Francisco
+#+SETUPFILE: setup.org
+#+OPTIONS: ^:nil
+
+{{{post_title(./chon-concert-with-tricot-polyphia-and-ttng.html, CHON concert (with Tricot\, Polyphia\, and TTNG), July 26\, 2018)}}}
+
+Last month I went to the CHON concert in SF with a friend. [[http://tricot.tv/][Tricot]] is my favorite
+band and there was no way I was going to miss the chance to see them live. It
+was an amazing show. Tricot's set was a bit short but they played some of my
+favorite songs including *18,19*. Being in a crowd where everyone is immersed in
+the music is a strange feeling, like when you get shivers down your
+spine. Towards the end of the concert we went to buy some merch and Tricot was
+there, so I met them and we took a picture together. Really surprised that even
+happened, isn't it rare for bands to just hang out after their set?
+
+Next, I want to see [[http://www.motfd.com/][Mass of the Fermenting Dregs]]. They just released a new album
+(titled /No New World/) after 8 years. It's so damn good x_x. Hopefully I can
+catch a show when I visit Japan.
+
+{{{ediv}}}

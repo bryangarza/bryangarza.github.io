@@ -4,7 +4,7 @@
 #+DESCRIPTION: First impressions switching to MATE
 #+SETUPFILE: setup.org
 
-{{{post_title(./what-i-want-from-window-managers-(switching-from-i3-to-mate).html, What I Want From Window Managers (Switching from i3 to MATE), August 20\, 2017)}}}
+{{{post_title(./what-i-want-from-window-managers-switching-from-i3-to-mate.html, What I Want From Window Managers (Switching from i3 to MATE), August 20\, 2017)}}}
 
 I decided to try and switch to a different window manager, namely because I was
 tired of switching to the wrong workspace in i3. Even though I for the most part
