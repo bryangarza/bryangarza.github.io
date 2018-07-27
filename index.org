@@ -3,11 +3,6 @@
 #+OPTIONS: H:5
 #+SETUPFILE: setup.org
 
-My interests include programming language theory / type theory, distributed
-systems, Linux, math rock, post-rock, high-end audio, and foreign languages.
-
-I'm a software engineer at Amazon Lab126.
-
 ~ [[https://github.com/bryangarza][GitHub]], [[mailto:bry@riseup.net][Contact]], [[file:bry.asc][PGP key]], [[http://themattchan.com/plquotes.html][PL quotes]]
 
 * All Posts {{{archive}}}
